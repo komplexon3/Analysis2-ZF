@@ -1,0 +1,84 @@
+%% Theorem-like environments
+
+%% This can be changed according to language. You can comment out the ones you
+%% don't need.
+
+\numberwithin{equation}{chapter}
+
+%\theorembodyfont{\normalfont}
+
+%% English variants
+\newtheorem{theoremm}{T}[chapter]
+\newtheorem{examp}[theoremm]{E}
+\newtheorem{rem}[theoremm]{R}
+\newtheorem{coro}[theoremm]{C}
+\newtheorem{defi}[theoremm]{D}
+\newtheorem{lemma}[theoremm]{L}
+\newtheorem{proposition}[theoremm]{P}
+\newtheorem{conc}[theoremm]{Con}
+\newcommand{\thistheoremname}{}
+\newtheorem*{genericthm}{\thistheoremname}
+\newenvironment{namedtheorem}[1]
+  {\renewcommand{\thistheoremname}{#1}%
+   \begin{genericthm}}
+  {\end{genericthm}}
+  
+  
+%\newenvironment{concept}[1]
+%{
+  % This is what comes before the content
+%  {\textbf{#1\,}}
+%}
+%{
+  % This is what comes after the content
+%}
+
+% \makeatletter
+% \def\thm@space@setup{%
+%   \thm@preskip=100pt \thm@postskip=100pt
+% }
+% \makeatother
+
+ %\renewtheoremstyle{customstyle} %
+ %{3pt} % Space above
+ %{3pt} % Space below
+ %{} % Body font
+ %{} % Indent amount
+ %{\upshape} % Theorem head font
+ %{} % Punctuation after theorem head
+ %{} % Space after theorem head
+ %{} % Theorem head spec (can be left empty, meaning `normal')
+
+
+%\theoremstyle{definition} 
+% \newtheorem{examp}{Theorem}{Example}
+
+%% Proof environment with a small square as a "qed" symbol
+%\theoremstyle{nonumberplain}
+%\theorembodyfont{\normalfont\upshape}
+%\theoremsymbol{\ensuremath{\square}}
+%\newtheorem{proof}{Proof}
+%\newtheorem{beweis}{Beweis}
+
+
+%my color shit
+\definecolor{lightblue}{rgb}{0.95, 0.95, 1}
+\definecolor{lightpink}{rgb}{1, 0.95, 0.95}
+\definecolor{lightyellow}{rgb}{1, 0.97, 0.90}
+\definecolor{lightorange}{rgb}{1, 0.95, 0.90}
+\definecolor{lightgreen}{rgb}{0.95, 1, 0.90}
+\definecolor{lightgrey}{rgb}{0.97, 0.97, 0.97}
+
+\mdfsetup{skipabove=3pt, skipbelow=3pt}
+
+\newenvironment{definition}{\begin{mdframed}[backgroundcolor=lightblue, hidealllines=true, innerleftmargin=2pt, innerrightmargin=2pt]\begin{defi}}{\end{defi}\end{mdframed}}
+
+\newenvironment{theorem}{\begin{mdframed}[backgroundcolor=lightpink, hidealllines=true, innerleftmargin=2pt, innerrightmargin=2pt]\begin{theoremm}}{\end{theoremm}\end{mdframed}}
+
+\newenvironment{remark}{\begin{mdframed}[backgroundcolor=lightyellow, hidealllines=true, innerleftmargin=2pt, innerrightmargin=2pt]\begin{rem}}{\end{rem}\end{mdframed}}
+
+\newenvironment{corollary}{\begin{mdframed}[backgroundcolor=lightorange, hidealllines=true, innerleftmargin=2pt, innerrightmargin=2pt]\begin{coro}}{\end{coro}\end{mdframed}}
+
+\newenvironment{example}{\begin{mdframed}[backgroundcolor=lightgreen, hidealllines=true, innerleftmargin=2pt, innerrightmargin=2pt]\begin{examp}}{\end{examp}\end{mdframed}}
+
+\newenvironment{concept}{\begin{mdframed}[backgroundcolor=lightgrey, hidealllines=true, innerleftmargin=2pt, innerrightmargin=2pt]\begin{conc}}{\end{conc}\end{mdframed}}

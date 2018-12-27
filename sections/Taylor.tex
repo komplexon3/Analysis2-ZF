@@ -1,0 +1,64 @@
+\section{Taylor}
+
+\begin{theorem}[Taylor]
+Sei $f\in C^{m-1}([a,b])$ auf $]a,b[$ m-mal differenzierbar. Dann folgt:
+
+$$\exists \xi \in ]a,b[:
+f(b) = f(a) + f'(a)(b-a) + f''(a)\frac{(b-a)^2}{2!} + ... +$$
+$$f^{(m-1)}(a)\frac{(b-a)^{m-1}}{(m-1)!} + f^{(m)}(\xi)\frac{(b-a)^m}{m!}$$
+\end{theorem}
+
+\begin{definition}[Taylor-Polynom m-ter Ordnung]
+Wir definieren das Taylor-Polynom m-ter Ordnung als:
+$$T_mf(b;a) = f(b) = f(a) + f'(a)(b-a) + f''(a)\frac{(b-a)^2}{2!} + ... +$$
+$$f^{(m-1)}(a)\frac{(b-a)^{m-1}}{(m-1)!} + f^{(m)}(a)\frac{(b-a)^m}{m!}$$
+
+Das Taylor-Polynom können wir natürlich auch noch als Summenformel schreiben:
+$$T_mf(b;a) = \sum_{k=0}^m f^{(k)}\cdot\frac{(b-a)^k}{k!}$$
+
+Beachte, dass das völlig analog zu oben ist bis auf das $\xi$.
+Mit dem Taylor-Polynom wollen wir unsere Funktion annähern. Da wir das geeignete $\xi$ nicht kennen, können wir immer nur a für x einsetzen und werden daher einen Fehler machen.
+\end{definition}
+
+\begin{concept}[Abschätzung des Fehlers]
+Die Größe unseres Fehlers wollen wir jetzt abschätzen.
+Dafür definieren wir ihn erstmal:
+
+$$r_mf(b;a) := f(b)-T_mf(b;a)$$
+
+%Ob ich hier b oder x schreibe, ist egal. Wir müssen jetzt nur das Intervall $[a,x]$ betrachten.
+Der Fehler hier kann natürlich negativ werden, also nehmen wir den Betrag. Bei der Subtraktion der beiden riesigen Formeln bleibt nur jeweils der letzte Term stehen und wir kriegen:
+$$\exists \xi \in ]a,b[: |r_mf(b,a)| = |f^{(m)}(\xi)\frac{(b-a)^m}{m!}-f^{(m)}(a)\frac{(b-a)^m}{m!}|$$
+$$\leq sup_{\mu \in ]a,[b}|(f^{(m)}(\mu)-f^{(m)}(a))\frac{(b-a)^m}{m!}|$$
+$$\leq sup_{\mu \in ]a,[b}|(f^{(m)}(\mu)-f^{(m)}(a))|\frac{(b-a)^m}{m!}$$
+weil $b>a$ in unserem Fall,
+$$\leq sup_{c \in ]a,b[}|f^{(m+1)}(c)|\frac{(b-a)^{m+1}}{(m+1)!}$$
+
+In der letzten Zeile haben wir den Mittelwertsatz verwendet, was natürlich nur geht, wenn die Funktion mindestens (m+1)-mal diffbar ist. (Ist bisschen schwierig zu sehen.)
+\end{concept}
+
+
+\begin{example}
+So, was bringt uns das ganze Zeug jetzt?
+Angenommen, wir wollen $log(3/2)$ berechnen, was ja durchaus ein berechtigter Wunsch sein könnte. Zum Beispiel wenn man Informatiker ist und eine log-Funktion programmieren soll, die dem Benutzer den Logarithmus beliebiger Zahlen ausspuckt. (Was man dann sicher nicht so macht, aber egal.)
+
+Naja, setzen wir halt mal ein. Der einzige Punkt, an dem wir den Wert des Logarithmus genau kennen, und der nicht unbedingt eine irrationale Zahl ist (also e), ist bei x=1.
+Also "taylorn" wir in $a=1$.
+Wir erhalten für die zweite Ordnung des Taylor-Polynoms:
+
+$$\log(3/2) \approx log(1) + log'(1)\cdot(3/2 - 1) + log''(1)\cdot\frac{(3/2-1)^2}{2!}$$
+$$= 0 + \frac{1}{1}\cdot\frac{1}{2} - \frac{1}{1^2}\cdot\frac{\frac{1}{2^2}}{2}$$
+$$= \frac{1}{2} - \frac{1}{8} = \frac{3}{8}$$
+
+Und wie gut ist diese Näherung jetzt? Dafür berechnen wir mit der Formel von oben den Fehler:
+$$|r_2log(\frac{3}{2};1)|$$
+$$\leq sup_{c \in ]1,3/2[}|log'''(c)|\cdot\frac{(\frac{3}{2}-1)^{3}}{3!}$$
+$$= sup_{c \in ]1,3/2[}|\frac{2}{c^3}|\cdot \frac{1}{48} = \frac{2}{1^3}\cdot\frac{1}{48} = \frac{1}{24}$$
+
+Wir haben unseren gesuchten Wert also auf $\frac{1}{24}$ genau getroffen.
+$\Rightarrow log(\frac{3}{2})\in [\frac{3}{8}-\frac{1}{24}, \frac{3}{8}+\frac{1}{24}] = [\frac{1}{3}, \frac{5}{12}]$
+\end{example}
+
+\begin{concept}[Anwendung der Taylor-Näherung]
+Diese Näherung sieht zwar echt ziemlich nervig aus, aber es sie ist eines der wichtigsten Werkzeuge, die ihr aus der Analysis mitnehmen solltet. Taylor wird praktisch immer verwendet, wenn man irgendeine Funktion abschätzen soll. Auch in völlig verrückten Fällen, wie zum Beispiel wenn euer Optiker die perfekte Krümmung einer Linse ausrechnen soll, damit ihr eine gute Brille bekommt.
+\end{concept}

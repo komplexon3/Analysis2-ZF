@@ -1,0 +1,286 @@
+\chapter{Folgen und Reihen}
+
+%% Füllt die Lücken. :)
+%% Ihr habt einige Freiheiten dabei, z.B. dürft ihr gerne zusätzliche Dinge hinzufügen etc.
+%% Einige Dinge sind vordefiniert (dank eines Freundes von mir), aber wenn ihr andere Formatierungen verwenden wollt, könnt ihr das gerne tun.
+%% Bitte fragt mich vorher, wenn ihr größere Änderungen an den config-Dateien vornehmen wollt.
+
+\begin{definition}[Folgen]
+	Eine Abbildung $\mathbb{N}_0 \rightarrow \mathbb{R}, k \mapsto a_k$ heisst \textbf{(unendliche) Folge} in $\mathbb{R}$.
+    Eine Folge heisst \textbf{beschränkt}, falls die Teilmenge $\{a_n : n \geq 1\} \subset \mathbb{R}$ beschränkt ist.
+\end{definition}
+
+\begin{example}
+\textbf{Folge definiert durch Formel:}
+	\begin{itemize}
+	\item $a_n = 1$ , oder
+    \item $a_n = n$ , oder
+    \item $a_n = \frac{1}{1+n^2}$
+	\end{itemize}
+	
+	\noindent\textbf{Folge rekursiv definiert:}
+	$a_n =$ (Funktion definiert über $a_{n-1},a_{n-2},...,n$)\newline
+	geg. $(a_n) n \in \mathbb{N} \quad auf \quad\mathbb{R}$\newline
+	\tab $s_1 = a_1$\newline
+	\tab $s_{n+1} = a_{n+1}+s_n$\\
+	
+	\noindent Wichtige Folgen:
+	
+	\noindent\textbf{Arithmetische Folge:}\\
+	$a_n$ , sodass $a_{n+1}-a_n$ konstant. D.h. $a_{n+1}-a_n = d (\in \mathbb{C})$\newline
+	 $\Rightarrow a_1 = a$\newline
+	\hspace*{0.32cm} $a_2= a_1 +d = a+d$\newline
+	\hspace*{0.32cm} $a_3 = a+2\cdot d,...\Rightarrow \underline{a_n = a+(n-1)d}$
+	
+	\noindent\textbf{Geometrische Folge:}\\
+	$a_n$ , sodass $q \in \mathbb{C}, a_{n+1} = q\cdot a_n$
+	
+	\noindent$\Rightarrow a_1 = a$\newline
+	\hspace*{0.32cm} $a_2= qa$\newline
+	\hspace*{0.32cm} $a_3 = q^2a$\newline
+	\tab ...\newline
+	\hspace*{0.32cm} \underline{$a_n = q^{n-1}a$}
+\end{example}
+
+\section{Grenzwert einer Folge}
+	Sei $(a_n)_{n\in \mathbb{N}}=(a_1,a_2,a_3...)$ einer Folge in $\mathbb{R}, a \in \mathbb{R}$\\
+	
+	\begin{definition}[Konvergenz]
+    Die Folge $(a_n)_{n\in \mathbb{N}}$\textbf{ konvergiert} gegen $a$ für $n \rightarrow \infty$, falls gilt:
+	
+		$$\forall \varepsilon > 0 \ \exists n_0\in \mathbb{N} \ \forall n \geq n_0:|a_n|-a < \varepsilon$$
+		
+		\raggedright{Falls ein solcher \textbf{Grenzwert / Limes} existiert, so schreiben wir}
+		
+		$$a = \lim_{x \to \infty}  a_n$$
+        oder $a_n \rightarrow a (n\rightarrow \infty)$.
+        Ansonsten ist die Folge \textbf{divergent}.
+	\end{definition}
+	
+    \begin{theorem}
+    	Der Grenzwert einer konvergierenden Folge ist eindeutig bestimmt.
+    \end{theorem}
+    
+\section{Konvergenzkriterien}
+	
+	\begin{definition}[Monotone Konvergenz]
+    	Eine monotone reelle Folge $(a_n)_n$ konvergiert gdw. sie beschränkt ist.\\
+        Es gilt: $\lim_{n\to\infty} a_n = \sup a_n$
+	\end{definition}
+	
+    	\noindent\begin{definition}[Cauchy-Folge]
+	\noindent $(a_n)_{n\in \mathbb{N}}$ heisst \textbf{Cauchy-Folge}, falls gilt:
+		$$\forall \varepsilon > 0\ \exists n_o = n_0(\varepsilon) \in \mathbb{N}\ \forall n,l \geq n_0 : |a_n-a_l| < \varepsilon$$
+       	Eine Folge $(a_n)_n \in \C$ ($(a_n)_n = (b_n)_n + i(c_n)_n)$) ist eine Cauchy-Folge, gdw. $(a_n)_n$ \& $(b_n)_n$ Cauchy-Folgen sind.
+	\end{definition}
+
+\begin{theorem}[Cauchy-Kriterium]
+
+Für $(a_n)_{n\in \N} \subset \R$ gilt:
+
+$(a_n)_{n\in \mathbb{N}}$ ist konvergent $\Longleftrightarrow$
+$(a_n)_{n\in \mathbb{N}}$ ist Cauchy-Folge.
+\end{theorem}
+
+\begin{theorem}[Sandwich Satz]
+	Seien $(a_n)_n$, $(b_n)_n$, $(c_n)_n$ drei Folgen, sodass $a_n \leq b_n \leq c_n$ für alle $n \in \mathbb{N}$.
+    Angenommen $(a_n)_n$ und $(c_n)_n$ sind konvergent und $a = \lim a_n = \lim c_n$, dann ist auch $(b_n)_n$ konvergent und $\lim b_n = a$.
+\end{theorem}
+    
+	\begin{theorem}[Rechnen mit Folgen]
+    Sind Folgen $(a_n)_{n\in \mathbb{N}},(b_n)_{n\in \mathbb{N}} \subset \mathbb{R}\ $ konvergent mit $\lim_{n \to \infty} a_n= a, \lim_{n \to \infty}b_n = b$.
+    Dann konvergieren die Folgen $(a_n+b_n)_{n\in \mathbb{N}}, (a_n\cdot b_n)_{n \in \mathbb{N}}$ und:
+	
+	\textbf{i)} $\lim_{n \to \infty} (a_n+b_n)= a+b = \lim_{n \to \infty}a_n+\lim_{n \to \infty}b_n$
+	
+	\textbf{ii)} $\lim_{n \to \infty} (a_n\cdot b_n)= a\cdot b = \lim_{n \to \infty}a_n\cdot\lim_{n \to \infty}b_n$
+	
+	\textbf{iii)} Falls zusätzlich $b\neq 0 \neq b_n$ für alle $n$, so gilt $\lim_{n \to \infty}(\frac{a_n}{b_n})= \frac{a}{b}$
+	
+	
+	\textbf{iv)} Falls $a_n \leq b_n \forall n\in \mathbb{N}$, so auch $a\leq b$
+	
+	\end{theorem}
+
+\section{Teilfolgen, Häufungspunkte}
+\begin{definition}[Teilfolge]
+Sei $l:\N \rightarrow \N$ eine injektive, monoton wachsende Funktion. (Glieder können ausgelassen werden.)
+
+Dann heißt $(a_{l(n)})_{n\in \N}$ eine Teilfolge von $(a_n)_n$.
+\end{definition}
+
+\begin{definition}[Häufiungspunkt]
+Für eine Folge $(a_n)_n\in\R$ heißt $a\in\R$ ein Häufungspunkt, wenn eine Teilfolge von $(a_n)_n$ gegen a konvergiert.
+\end{definition}
+
+\begin{theorem}[Bolzano-Weiherstrass]
+Jede beschränkte Folge hat eine konvergente Teilfolge und damit auch einen Häufungspunkt.
+\\
+Weiter gilt:
+\begin{itemize}
+\item Konvergiert eine Folge, so ist die grösste konv. TF gleich der kleinsten konv. TF.
+\item Konvergiert eine Folge gegen $a$, so konvergiert jede TF gegen $a$.
+\end{itemize}
+
+\end{theorem}
+
+% \section{Folgen in $\R ^d$ oder $\C$}
+
+
+\section{Reihen}
+
+\begin{definition}[Reihen]
+	Sei $(a_k)_k$ eine Folge in $\mathbb{R}$ oder $\mathbb{C}$.
+	Ein Ausdruck der Form $\sum_{k=0}^{\infty}a_k$ heisst eine \textbf{(unendliche) Reihe}.
+    
+    Wir definieren zusätzlich die \textbf{Folge von Partialsummen} $$(S_n)_n = (\sum_{k=0}^{n} a_k)_n$$
+\end{definition}
+
+\begin{definition}[Konvergenz einer Reihe]
+Die Reihe $\sum_{k=1}^{\infty}a_k$ ist konvergent, falls die Folge von Partialsummen konvergiert.
+D.h.
+$$\lim\limits_{n \rightarrow \infty} S_n = \lim\limits_{n \rightarrow \infty} \sum_{k=1}^{n} a_k = \sum_{k=1}^{\infty}a_k$$
+existiert.
+\end{definition}
+
+\begin{theorem}[Cauchy-Kriterium]
+$\sum_{k=1}^{\infty} a_k$ ist konvergent $\Leftrightarrow \forall \epsilon > 0$ $\exists N \in \mathbb{N}$ s.d. $$\forall n \geq N, m\in \mathbb{N} : |\sum_{k=m+1}^{n+m} a_k| < \epsilon$$
+
+d.h. man kann 0 mit Partialsummen beliebig annähern
+\end{theorem}
+
+\begin{theorem}[Notwendige Bedingung für Konvergenz]
+Sei $(S_n)_{n\mathbb{N}} = \sum_{k=1}^{\infty} a_k$ eine konvergente Reihe, dann gilt $lim_{n\rightarrow\infty} a_k = 0$
+
+d.h. $lim_{n\rightarrow\infty} a_k \neq 0 \Rightarrow (S_n)$ divergent
+
+\textbf{Gilt nicht in der anderen Richtung!}
+\end{theorem}
+
+\begin{theorem}[Rechnen mit Reihen]
+Seinen $\sum_{k=1}^\infty a_k$, $\sum_{k=1}^\infty b_k$ konvergente Reihen, und $\alpha, \beta \in \mathbb{C}$, dann sind die Reihen $\sum_{k=1}^\infty (a_k + b_k)$, $\sum_{k=1}^\infty (\alpha a_k)$ konvergent und es gilt $\alpha \sum_{k=1}^\infty a_k + \beta \sum_{k=1}^\infty b_k = \sum_{k=1}^\infty (\alpha a_k + \beta b_k)$
+\end{theorem}
+
+% Es gibt hier noch einen Satz zu Potenzreihen. War der dran? Sonst muss er hier nicht rein.
+
+\section{Absolute Konvergenz}
+
+\begin{definition}[Absolute Konvergenz]
+Die Reihe $\sum_{k=1}^{\infty}a_k$ heißt absolut konvergent, falls $\sum_{k=1}^{\infty}|a_k|$\ konvergiert.
+\end{definition}
+    
+\begin{theorem}
+ Absolute Konvergenz $\Rightarrow$ Konvergenz
+\end{theorem}
+
+\begin{theorem}[Quotientenkriterium]
+Sei $\forall k \in \N: a_k\neq 0$.
+\begin{enumerate}
+\item Falls $\lim_{n\rightarrow \infty}|\frac{a_{n+1}}{a_n}|<1$ oder auch $\exists 0\leq C<1:|\frac{a_{n+1}}{a_n}|\leq C$ für n groß genug, so konvergiert die Reihe $\sum_{n=1}^{\infty}a_n$ absolut.
+\item Falls $\lim_{n\rightarrow \infty}|\frac{a_{n+1}}{a_n}|>1$ oder auch $\exists C>1:|\frac{a_{n+1}}{a_n}|\geq C$ für n groß genug, so divergiert die Reihe $\sum_{n=1}^{\infty}a_n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Wurzelkriterium]
+\begin{enumerate}
+\item Falls $\lim_{n\rightarrow \infty}\sqrt[n]{|a_n|}<1$ oder auch $\exists 0\leq C<1:\sqrt[n]{|a_n|}\leq C$ für n groß genug, so konvergiert die Reihe $\sum_{n=1}^{\infty}a_n$ absolut.
+\item Falls $\lim_{n\rightarrow \infty}\sqrt[n]{|a_n|}>1$ oder auch $\exists C>1:\sqrt[n]{|a_n|}\geq C$ für n groß genug, so divergiert die Reihe $\sum_{n=1}^{\infty}a_n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+In beiden Kriterien gilt: Ist der Limes gleich 1, so hilft uns das jeweilige Kriterium nichts und wir müssen uns andere Strategien überlegen.
+\end{remark}
+
+\begin{remark}
+Quotienten- und Wurzelkriterium sind äquivalent.
+\end{remark}
+
+
+\begin{theorem}
+% Ersetz mich durch Theorem zum Umordnen von Reihen!
+Sei $ \sum_{k=1}^{\infty}a_k$  \textbf{absolut konvergent} und sei $\phi: \N \rightarrow \N $ bijektiv. Dann ist auch die "umgeordnete" Reihe $ \sum_{k=1}^{\infty}a_{\phi(k)}$ konvergent, und es gilt
+\[
+\sum_{k=1}^{\infty}a_{\phi(k)} = \sum_{k=1}^{\infty}a_k
+\]
+\end{theorem}
+
+\begin{theorem}[Riemann]
+Sei $\sum_{k=1}^{\infty}a_k$ konvergent, aber nicht absolut konvergent. Dann gilt:
+$$\forall x\in \R\exists\phi:\! \sum_{k=1}^{\infty}a_{\phi(n)} = x$$,
+wobei $\phi: \N \to \N$ bijektiv.
+\end{theorem}
+
+\begin{theorem}[Abs. Konv. $\Rightarrow$ Konv. des Produkts]
+Seien $(a_n)_n, (B_n)_n \in \C$, $\sum_{k=1}^{\infty}a_k$, $ \sum_{k=1}^{\infty}b_k$  absolut konvergent. Dann ist auch das Produkt der beiden Reihen absolut konvergent und es gilt
+$$\sum_{k=0}^{\infty} \sum_{l=0}^{\infty}{a_k b_l} = \sum_{k=0}^\infty a_k \sum_{k=0}^\infty b_k$$.
+\end{theorem}
+
+\begin{definition}
+Eine \textbf{Potenzreihe} ist eine Reihe der Form $\sum_{k=0}^\infty c_k z^k$.
+\end{definition}
+
+\begin{theorem}[Leibniz-Reihe]
+Sei $(a_n)_{n\in\N}$ eine monotone Folge positiver Zahlen mit $a_{n-1} \geq a_n \to 0 (n \to \infty)$, so konvergiert die Reihe 
+$$S_n = \sum_{k=1}^n (-1)^k \cdot a_k$$
+Es gilt die Fehlerabschätzung $|S-S_n| \leq a_{n+1}$.
+\end{theorem}
+
+\begin{definition}[Konvergenzradius]
+Wir definieren den Konvergenzradius einer Potenzreihe als
+$$\rho = \frac{1}{\lim_{n\rightarrow\infty} {\sqrt[n]{c_n}}},$$
+falls der Grenzwert existiert.
+Alternativ gilt auch $$\rho = \lim_{n\rightarrow\infty} \frac{a_n}{a_{n+1}}.$$
+\end{definition}
+
+\begin{theorem}[Konvergenz von Potenzreihen]
+Aus dem Quotienten- und Wurzelkriterium folgt direkt, dass:
+\begin{itemize}
+\item $|x|<\rho\Rightarrow$ Die Potenzreihe ist abs. konv.
+\item $|x|>\rho \Rightarrow$ Die Potenzreihe ist divergent.
+\end{itemize}
+Für $|x| = \rho$ ist das Konvergenzverhalten unklar!
+\end{theorem}
+
+\begin{definition}[Exponentialfunktion]
+$$exp(x) = \sum_{k=0}^{\infty} \frac{x^k}{k!} = \lim_{n \rightarrow \infty} (1+\frac{x}{n})^n = e^x (\forall x \in \C)$$
+\end{definition}
+
+\begin{definition}[Logarithmus]
+Wir definieren den Logarithmus als die stetige (siehe Umkehrsatz für offene Intervalle) Umkehrfunktion der Exponentialfunktion. 
+$$log=(exp|_\R)^{-1} : ]0,\infty[\to\R.$$
+
+(Wir schränken $exp$ hier auf $\R$ ein, weil der Logarithmus nur auf $\R$ eindeutig definiert ist, die Exponentialfunktion dagegen auch auf $\C$.)
+%Das kann man so leider nicht schreiben. Außerdem haben wir den Logarithmus mit spezieller Basis bisher, glaube ich, gar nicht eingeführt. (MG)
+%Sei $f: x \rightarrow b^{x}$ , dann ist $ f^{-1} = b^{x} \rightarrow x  = \log_{b}(x)$
+\end{definition}
+
+\begin{theorem}[Additionstheorem]
+	Für alle $z, w \in \C$ gilt $exp(z+w) = exp(z) \cdot exp(w)$.
+    
+    Somit gilt für alle $z \in \C$, dass $exp(z) \cdot exp(-z) = exp(0) = 1$. Insbesondere folgt, dass $exp(z) \neq 0$.
+\end{theorem}
+
+\begin{remark}
+Exponentialfunktion für rein imaginäre Argumente $z = iy$ ($y\in \R$), können wir Exp(iy) durch Umordnung gemäss Theorem 2.19 in Real- und Imaginärteil zerlegen
+\[
+Exp(iy) = \sum_{k=0}^{\infty} \frac{(iy)^k}{k!} =: \cos(y) + i\sin(y).
+\]
+\end{remark}
+
+\begin{remark}
+Für komplexe Zahlen $z=x+iy \in \C$ gilt
+\[
+exp(x+iy) = exp(x) \cdot exp(iy) = exp(x) \cdot (\cos(y)+i\sin(y)).
+\]
+\end{remark}
+
+\begin{definition}[Trigonometrische Funktionen]
+Wir definieren den Sinus, Cosinus und Tangens anhand von Taylorreihen:
+$$sin(x) = \sum^{\infty}_{n = 0} (-1)^n \frac{x^{2n+1}}{(2n+1)!}= \frac{x}{1} - \frac{x^3}{3!}+\frac{x^5}{5!} \cdots$$
+$$cos(x) = \sum^{\infty}_{n = 0} (-1)^n \frac{x^{2n}}{(2n)!}= \frac{x^0}{0!} - \frac{x^2}{2!}+\frac{x^4}{4!} \cdots$$
+$$tan(x) = \frac{sin(x)}{cos(x)}$$
+Der Tangens ist nicht definiert für $\{k\pi + \frac{\pi}{2} | k \in \Z\}$
+
+% Tangens mit ausführlicher Formel? - JS - Nein, passt so. (MG)
+\end{definition}

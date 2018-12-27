@@ -1,0 +1,298 @@
+\chapter{Riemann-Integral}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Füllt die Lücken. :)
+%% Ihr habt einige Freiheiten dabei, z.B. dürft ihr gerne zusätzliche Dinge hinzufügen etc.
+%% Einige Dinge sind vordefiniert (dank eines Freundes von mir), aber wenn ihr andere Formatierungen verwenden wollt, könnt ihr das gerne tun.
+%% Bitte fragt mich vorher, wenn ihr größere Änderungen an den config-Dateien vornehmen wollt.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Stammfunktionen}
+\begin{definition}[Stammfunktion einer Funktion]
+
+Sei $f:]a,b[\rightarrow\R$ stetig, also $f\in C^0(]a,b[)$.
+Eine Funktion $F\in C^1(]a,b[)$ heißt Stammfunktion von f gdw. $\forall x\in ]a,b[: F'(x)=f(x)$ gilt.
+\end{definition}
+
+\begin{remark}
+Ist $f$ integrierbar, so muss nicht zwingenderweise eine stetige Stammfunktion existieren.
+\end{remark}
+
+\begin{theorem}[Konstante]
+Seien $F_1, F_2: ]a,b[\rightarrow \R$ Stammfunktionen von $f\in C^0(]a,b[)$. Dann gilt $F_1-F_2 = c\in\R$.
+\end{theorem}
+
+\section{Formale Definition des Riemann=Integrals}
+
+% \begin{definition}[Charakteristische Funktion]
+% Sei $\Omega \subset \R$ eine Teilmenge der reellen Zahlen. Dann definieren wir die \textit{charakteristische Funktion} von $\Omega$ als
+% $$\chi_\Omega: \Omega\rightarrow\R$$
+% $$\chi_\Omega(x) = 
+% 	\begin{cases} 
+%       1		\hfill & x\in\Omega \\
+%       0		\hfill & x\notin\Omega \\
+%   \end{cases}$$
+% \end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Partition = Zerlegung]
+Sei $I:=[a,b]\subset \R$ ein Intervall. Dann nennt man eine endliche Teilmenge von Punkten in I eine Partition. Wenn man sie ordnet, erhält man $P:=\{x_0,...,x_n\}$, wobei man häufig $x_0=a$ und $x_n=b$ wählt.
+\end{definition}
+
+\begin{definition}[Riemann-Summe]
+Sei $I:=[a,b]\subset \R$ ein Intervall und $P:=\{x_0,...,x_n\}\subset I$ eine Partition von I. Gegeben sei außerdem eine Menge von Stützpunkten für unsere Partition, also $\Xi := \{\xi_1, ..., \xi_n| x_{i-1}\leq \xi_i\leq x_i\}$. Dann definieren die Riemann-Summe über P als
+$$S(f, P, \Xi) = \sum_{i=1}^n\xi_i\cdot(x_i-x_{i-1})$$
+\end{definition}
+
+\begin{definition}[Unter- und Obersumme]
+
+Sei f: [a,b] $\rightarrow \R$, beschränkt und P $\subset$ [a,b] eine Zerlegung von [a,b].\\ Wir definieren die Unter- und die Obersumme über spezielle Riemann-Summen.
+Die Untersumme ist: 
+$$\underline{S}(f,P) = S(f, P, \Xi_-) = \sum_{i=1}^n\inf\limits_{x_{i-1}\leq x \leq x_i} f(x)\cdot(x_i-x_{i-1})$$
+Analog ist die Obersumme:
+$$\overline{S}(f,P) = S(f, P, \Xi_+) = \sum\limits_{i=1}^n\sup\limits_{x_{i-1}\leq x \leq x_i} f(x)\cdot(x_i-x_{i-1})$$
+\end{definition}
+
+\begin{theorem}
+Seien $a<b\in\R$, $f: I=[a,b] \to\R$ beschränkt, so gilt:
+$$\sup\limits_{P\in\mathcal{P}(I)}\underline{S}(f,P) \leq \inf\limits_{P\in\mathcal{P}(I)}\overline{S}(f,P)$$
+\end{theorem}
+
+\begin{definition}[Riemann-Integrierbarkeit]
+
+Eine Funktion f heisst Riemann-integrierbar auf [a,b], falls f beschränkt ist und
+$$\sup\limits_{P} \underline{S}(f, P) = \inf\limits_{P} \overline{S}(f, P) =: \int_a^b f(x) dx$$
+gilt, wobei P eine Zerlegung von [a,b] ist.
+Definieren wir $P_n$ als eine beliebige Partition von [a,b] mit n Teilintervallen und Stützpunkten, erhalten wir außerdem
+$$\lim\limits_{n\rightarrow\infty} \underline{S}(f, P_n) = \lim\limits_{n\rightarrow\infty} \overline{S}(f, P_n) =: \int_a^b f(x) dx$$
+
+Für \textbf{Beweise} ist folgende Definition hilfreich:
+$$\forall \epsilon > 0 \exists P :|\underline{S}(f,P) - \underline{S}(f,P)| < \epsilon$$
+\end{definition}
+
+\begin{definition}[Feinheit]
+Wir bezeichnen diese \textbf{Feinheit} einer Zerlegung $P$ mit:
+$$\mu(P) := max\{x_i -x_{i-1} |x_i \in P,\; 1 \leq i \leq |P|\}$$
+\end{definition}
+
+\begin{theorem}
+Sei $f:I=[a,b]\to\R$ beschränkt und $A\in\R$, so sind äquivalent:
+\begin{itemize}
+\item $f$ ist Riemann-integrierbar und $A = \int_a^bf(x)dx$.
+\item $\forall \epsilon > 0 \; \exists P \in \mathcal{P}(I):\quad A-\epsilon < \underline{S}(f,P)\leq \overline{S}(f,P) < A+\epsilon$ $$\Leftrightarrow$$ $\overline{S}(f,P) - \underline{S}(f,P) < \epsilon$
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}
+Sowohl \textbf{stetige} als auch \textbf{monotone} Funktionen $f:[a,b]\rightarrow\R$ ($[a,b]$ kompakt) sind Riemann-integrierbar.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}[Eigenschaften des Integral]
+
+Seien $f,g: [a,b]\rightarrow \mathbb{R}$ Riemann-integrierbar und sei $\alpha,p \in \mathbb{R}$, $p \geq 1$, zudem $a<c<b$. Dann gilt:
+		
+	\begin{enumerate}
+		\item $f+g$, $fg$, $\alpha f$, $|f|^p$, $\max\{f,g\}$ und $\min\{f,g\}$  sind über $[a,b]$ integrierbar.
+	\end{enumerate}
+	
+	\textbf{Linearität}
+	\begin{enumerate}[resume]
+		\item $\int_{a}^{b}(\alpha f(x)) \ dx = \alpha \int_{a}^{b}f(x) \ dx $
+		
+		\item $\int_{a}^{b} (f(x)+g(x)) \ dx = \int_{a}^{b}f(x) \ dx + \int_{a}^{b}g(x) \ dx$
+	\end{enumerate}	
+	
+	\textbf{Monotonie}
+	\begin{enumerate}[resume]
+		\item $\int_{a}^{b}f(x) \ dx \leq \int_{a}^{b}g(x) \ dx $, falls $f \leq g$
+	\end{enumerate}
+	
+	\textbf{Dreiecksungleichung}
+	\begin{enumerate}[resume]
+		\item $\big|\int_{a}^{b} f(x) dx\big| \leq \int_{a}^{b}|f(x)| dx$
+	\end{enumerate}
+
+	\textbf{Gebiets-Additivität}
+	\begin{enumerate}[resume]
+		\item $\int_{a}^{b}f(x) dx = \int_{a}^{c} f(x) dx + \int_{a}^{b}f(x) dx$
+        \item $b<a: \quad \int_{a}^{b}f(x) dx = -\int_{b}^{a}f(x) dx$
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Riemannintegrierbarkeit glm. konv. Funktionsfolgen]
+Sei $f_n: I=[a,b] \to \R$ eine Folge Riemannintegrierbarer Funktionen die glm. gegen $f: I\to\R$ konvergieren, dann ist $f$ R-intbar mit $\int_a^b f(x) dx =\lim\limits_{n\to \infty} \int_a^b f_n(x) dx$
+\end{theorem}
+
+\begin{theorem}
+Sei $f: I \to \R$ beschränkt, d.h. $\exists M\in\R\:\forall x\int I:\; -M \leq f(x) \leq M$, dann gilt für $P,Q\in\mathcal{P}(I)$:
+\begin{itemize}
+\item $\underline{S}(f,P)\geq \underline{S}(f,Q) - 4M\mu(P)N(Q)$
+\item $\overline{S}(f,P)\leq \overline{S}(f,Q) + 4M\mu(P)N(Q)$
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Fundamentalsatz der Analysis]
+
+Seien $a<b \in \mathbb{R}$ und sei $f: [a,b]\rightarrow \mathbb{R}$ eine stetige Funktion. Definieren wir $F: [a,b]\rightarrow \mathbb{R}$ durch
+
+\centering{$F(x) := \int_{a}^{x}f(t) dt$ \tab für $a\leq x\leq b$.}
+	
+	\raggedright{\textit{Dann ist $F$ stetig differenzierbar und es gilt}}
+	
+	\centering{ $F'(x) = f(x),\ \forall x \in [a,b]$}\\
+	
+	
+	\raggedright{\textit{Als Korollar folgt daraus:}}
+	
+	$$\int_{a}^{b} f(t)dt = F(b)- F(a)$$
+\end{theorem}
+
+\begin{theorem}[Partielle Integration]
+
+Seien $a < b$ reelle Zahlen 
+und seien f, g: [a, b] $\rightarrow \R$ stetig differenzierbar. Dann gilt
+$$\int_a^b f(x)g'(x)dx = f(b)g(b) - f(a)g(a) - \int_a^b f'(x)g(x)dx.$$
+\end{theorem}
+
+\begin{theorem}[Substitution]
+
+Seien $a < b$ reelle Zahlen, sei $\phi : [a, b] \rightarrow \R$ stetig differenzierbar, sei I $\subset \R$ ein Intervall so dass $\phi([a, b]) \subset I$, und sei f: $I \rightarrow \R$ eine stetige Funktion. Dann gilt
+$$\int_{\phi(a)}^{\phi(b)} f(x)dx = \int_a^b f(\phi(t))\phi'(t)dt$$
+\end{theorem}
+
+\begin{concept}[Substitution Hints]
+	Für $\sin^n$, $\cos^n$ mit n ungerade: $\tan{(t/2)}$.\\
+    Für $\sin^n$, $\cos^n$ mit n gerade: $\tan{(t)}$.\\
+\end{concept}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}[Partialbruchzerlegung]
+Für Bruch mit einem Nenner von teilerfremden Polynomen gibt es eine Zerlegung der folgenden Form:
+$$\frac{f(x)}{g_1(x) \cdot...\cdot g_r(x)} = \frac{f_1(x)}{g_1(x)}+ ... + \frac{f_r(x)}{g_r(x)}$$
+\\\\
+Für jede Nullstelle erstellen wir einen Partialbruch mit folgendem Ansatz:
+\begin{enumerate}
+\item Einfache, reelle Nullstelle:\\
+		$x_1 \rightarrow \frac{A}{x-x_1}$
+\item r-fache, reelle Nullstelle:\\
+		$x_1 \rightarrow \frac{A_1}{x-x_1} + \frac{A_2}{(x-x_1)^2} + ... + \frac{A_r}{(x-x_1)^r}$
+\item Einfache, komplexe Nullstelle:\\
+		$x^2 + px + q \rightarrow \frac{Ax + B}{x^2+px+q}$
+\item r-fache, komplexe Nullstelle:\\
+		$x^2 + px + q \rightarrow \frac{A_1x + B_1}{x^2+px+q} + \frac{A_2x + B_2}{(x^2+px+q)^2} + ... + \frac{A_rx + B_r}{(x^2+px+q)^r}$
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+Sei $I\subset \mathbb{R}$ ein Intervall, sei $f:I\rightarrow \mathbb{R}$ eine stetige Funktion, und seien $a,b \in I$ mit $a<b$ und $c\in \mathbb{R}\setminus\{0\}$.
+
+Dann gilt folgendes:
+
+Sind $a+c,b+c \in I$, gilt
+	\begin{enumerate}
+		\item $\int_{a}^{b}f(t+c)dt = \int_{a+c}^{b+c}f(x)dx$
+	\end{enumerate}
+	
+	\textit{Sind $ca,cb \in I$, gilt}
+	\begin{enumerate}[resume]
+		\item $\int_{a}^{b}f(ct)dt = \frac{1}{c}\int_{ca}^{cb}f(x)dx$
+	\end{enumerate}	
+
+	\textit{Ist $f$ stetig differenzierbar und $f(t) \neq 0,\ \forall t \in [a,b]$, gilt}
+	\begin{enumerate}[resume]
+	\item $\int_{a}^{b}\frac{f'(t)}{f(t)}dt = \log(|f(b)|)- \log(|f(a)|)$
+	\end{enumerate}	
+\end{corollary}
+
+
+\begin{theorem}[Mitelwertsatz der Integralrechnung]
+Sei $f$ auf $[a,b]$ stetig, so $\exists \xi \in [a,b]$, sodass gilt
+	
+	$$\int_{a}^{b}f(x)dc = (b-a) \cdot f(\xi)$$
+\end{theorem}
+
+
+\begin{theorem}
+Sei $f:[a,b]\rightarrow \mathbb{R}^2 \in C^1$ und $g: [c,d]\rightarrow [a,b]$ streng wachsend, bijektiv und differenzierbar. Dann haben die parametrischen Kurven $f$ und $f\circ g$ die selben Lösungen.
+\end{theorem}
+
+
+\section{Flächeninhalt, Bogenlänge, Volumen}
+
+
+Gegeben Funktion $f(x)$ stetig, differenzierbar.
+\\\noindent$A  = \int_{a}^{b}f(x)dx,\ f(x) \geq 0$\\
+$s = \int_{a}^{b}\sqrt{1+(f'(x))^2}dx = \int_{a}^{b}||f'(t)||dt$\\
+$V_x = \pi \int_{a}^{b}(f(x))^2dx$ (Rotationsvolumen um X-Achse)\\
+$V_y = \pi \bigg|\int_{a}^{b}x^2f'(x)dx\bigg| = \pi\bigg|\int_{f(a)}^{f(b)}x^2 dy\bigg|, \ f $ monoton\ (Rotationsvolumen um Y-Achse)\\
+$M = 2\pi \int_{a}^{b}f(x)\sqrt{1+(f'(x))^2}dx\ (Mantelflaeche)$
+
+\section{Uneigentlicher Integral}
+
+\begin{concept}[Uneigentliches Integral]
+	Oft ist es nützlich eine stetige Funktion auf einem offenen Intervall über das gesamte Intervall zu integrieren, selbst wenn das Intervall, bzw. die Funktion, unbeschränkt ist. In diesem Fall sprechen wir von einem \textbf{uneigentlichen (Riemannschen) Integral}.
+\end{concept}
+
+\begin{definition}[Uneigentliche Integral]
+	Seien $a\in \R \cup \{-\infty\}$ und $b\in \R \cup \{\infty\}$ mit $a < b$ gegeben und sei $I := (a,b)$.
+    \\\\
+    Eine Funktion $f: I \to \R$ ist \textbf{lokal Riemann integrierbar}, wenn sie auf jedes kompakte Intervall $K \subset I$ Riemann integrierbar ist.
+    \\\\
+    Eine solche Funktion $f: I \to \R$ ist \textbf{uneigentlich Riemann integrierbar} wenn eine Zahle $A \in \R$ existiert, so dass:
+    $$\forall \epsilon > 0: \ \lim_{\alpha \to a} \lim_{\beta \to b} |A - \int_\alpha^\beta f(x) dx| < \epsilon$$
+    
+    Existiert eine solches $A$,  so ist sie eindeutig bestimmt und wird das \textbf{uneigentliche Integral} genannt:
+    $$\int_a^b f(x) dx := A = \lim_{\substack{\alpha \searrow a \\ \beta \nearrow b}} \int_\alpha^\beta f(x) dx$$
+\end{definition}
+
+\begin{theorem}[Konvergenz uneigentlicher Integrale]
+  \textbf{Integrationsbereich unendlich}
+  \begin{enumerate}
+      \item \textbf{Direktes Berechnen mittels Definition}
+      \item \textbf{Vergleichskriterium} Sei $f,g$ auf $[a,\infty)$ stetig mit $0 \leq f(x) \leq g(x)$, dann: Ist $\int_a^{\infty}g(x)dx$ konvergent, so ist auch $\int_a^{\infty}f(x)dx$ konvergent.
+      \item \textbf{Absolute Konvergenz} Ist $\int_a^{\infty}|f(x)|dx$ konvergent, so ist auch $\int_a^{\infty}f(x)dx$ konvergent.
+      \item \textbf{Grenzwert-Tests}
+      \begin{enumerate}
+      	\item $f(x), g(x)$ auf $[a,\infty)$ stetig und $\lim\limits_{x\rightarrow\infty}\frac{f(x)}{g(x)} = A \neq \infty$, dann $\int_a^{\infty}|g(x)|dx$ kovergiert $\Rightarrow$ $\int_a^{\infty}|f(x)|dx$ konvergiert.
+        \item $f(x)$ auf $[a,\infty)$ stetig und $\lim\limits_{x\rightarrow\infty}x^p f(x) = A \neq \infty$ für ein $p > 1$, so konvergiert $\int_a^{\infty}|f(x)|dx$ und somit $\int_a^{\infty}f(x)dx$ konvergiert.
+        \item $f(x)$ auf $[a,\infty)$ stetig und $\lim\limits_{x\rightarrow\infty}x f(x) = A \neq 0,\infty$, so divergiert $\int_a^{\infty}f(x)dx$.
+		\end{enumerate}
+        \item \textbf{Leibniz Kriterium} Sei $f(x)$ auf $[a,\infty)$ stetig. Ist $f(x)$ monoton fallen und gilt $\lim\limits_{x\rightarrow+\infty}=0$, so konvergieren die uneigentlichen Integrale $\int_{a}^{\infty}f(x) sin(x) dx$ \& $\int_{a}^{\infty}f(x) cos(x) dx$.
+  \end{enumerate}
+  \textbf{Integration gegen Polstelle}\\
+  Die Kriterien 1-4 lassen sich genau gleich anwenden, 5 geht nicht mehr.
+\end{theorem}
+
+\begin{theorem}[Eigenschaften des uneigentlichen Integrals]
+	\begin{enumerate}
+    \item \textbf{(Kompatibilität)} Falls $I$ kompakt ist, ist $f: I \to \C $ u.R.i gdw. $f$ R.-integrierbar auf $I$ ist. Die Integrale sind gleich.
+    \item Falls $a_0<x_0<b_0$, $x_0 \in I$ und sowohl $\int_{x_0}^{b_0} f(t) dt$ als auch $\int_{a_0}^{x_0} f(t) dt$ existieren, dann existiert $\int_{a_0}^{b_0} f(t) dt$ und ist gleich $\int_{a_0}^{b_0} f(t) dt = \int_{a_0}^{x_0} f(t) dt + \int_{x_0}^{b_0} f(t) dt$
+    \item \textbf{(Linearität)} Falls $f_1 , \ f_2$ auf $I$ i.R.I sind und $u, \ v \ \in \C$, dann ist $uf_1+vf_2$ u.R.i. auf I mit $\int_I (uf_1(t) + vf_2(t)) dt = u\int_I f_1(t) dt +  v\int_I f_2(t) dt$
+    \item Sei $f: [a,b] \to \R$ stetig, diffbar auf $]a,b[$ mit Ableitung $f' = g: ]a,b[ \to \R$, dann ist $g$ auf $]a,b[$ u.R.i. mit $\int_a^b g(t) dt = f(b) - f(a)$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[Gamma-Funktion]
+	Für jede reelle Zahl $x>0$ ist die Funktion $(a,\infty) \to \R, t \mapsto t^{x-1}e^{-t}$ u.R.i..
+    Das resultierende Integral wird \textbf{Gamma-Funktion}  $\Gamma : (0,\infty) \to (0,\infty)$
+    genannt:
+    $$\Gamma(x) := \int_0^\infty t^{x-1}e^{-t} dt$$
+\end{definition}
+
+\begin{theorem}[Eigenschaften der Gamma-Funktion] $ $\\
+	\begin{enumerate}
+	\item $\Gamma(1) = 1$
+    \item $\forall x > 0 : \ \Gamma(x+1) = x\Gamma(x)$
+    \item $\Gamma(x)  = \lim_{n\to \infty} \frac{n!n^x}{x(x+1)\cdot ... \cdot(x+n)}$
+    \item Für alle natürlichen Zahlen gilt:  $\Gamma(n + 1) = n!$
+    \item $\Gamma(x) \cdot \Gamma(1-x) = \frac{\pi}{sin(\pi x)}$
+	\end{enumerate}
+\end{theorem}
+\end{document}

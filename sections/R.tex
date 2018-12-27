@@ -1,0 +1,161 @@
+\pagebreak
+\chapter{Die reellen Zahlen}
+%\begin{multicols}{3}
+
+%% Füllt die Lücken. :)
+%% Ihr habt einige Freiheiten dabei, z.B. dürft ihr gerne zusätzliche Dinge hinzufügen etc.
+%% Einige Dinge sind vordefiniert (dank eines Freundes von mir), aber wenn ihr andere Formatierungen verwenden wollt, könnt ihr das gerne tun.
+%% Bitte fragt mich vorher, wenn ihr größere Änderungen an den config-Dateien vornehmen wollt.
+
+
+
+\section{Elementare Zahlen}
+\begin{theorem}
+Jede reelle Zahle lässt sich beliebig gut durch rationale Zahlen approximieren.
+$$\forall x\in \R \ \forall \epsilon . 0 \exists q \in \Q: |x-q| \leq \epsilon$$
+\end{theorem}
+
+\section{Die Axiome der reellen Zahlen}
+	\begin{description}
+    
+	\item{Addition}
+    	
+	\begin{description}
+    \setlength\itemsep{0em} %% Kompakter als vorher -- Am besten irgendwo in die Configs einfügen
+	
+		\item{A-1} Assoziativität: $\forall x,y,z\in\R:x+(y+z) = (x+y)+z$
+		\item{A-2} Neutrales Element: $\exists0\in\R, \forall x\in\R:x+0=x$
+		\item{A-3} Inverses Element:$\forall x \in\R, \exists y \in\R: x+y=0$
+		\item{A-4} Kommutativität: $\forall x,y \in\R: x+y = y+x$
+	\end{description}
+    
+    \item{Multiplikation}
+	\begin{description}
+        \setlength\itemsep{0em} %% Kompakter als vorher -- Am besten irgendwo in die Configs einfügen
+	
+		\item{M-1} Assoziativität: $\forall x,y,z\in\R:x\cdot (y\cdot z) = (x\cdot y)\cdot z$
+		\item{M-2} Neutrales Element: $\exists 1\in\R, \forall x\in\R:x\cdot 1=x$
+		\item{M-3} Inverses Element:$\forall x \in\R, \exists y \in\R: x\cdot y=1$
+		\item{M-4} Kommutativität: $\forall x,y \in\R: x\cdot y = y\cdot x$
+	\end{description}
+    
+    \item{Distributiv-Gesetz}
+	\begin{description}
+    \setlength\itemsep{0em} %% Kompakter als vorher -- Am besten irgendwo in die Configs einfügen
+	
+		\item{D} $\forall x,y,z\in\R:x\cdot (y+z) = x\cdot y + x\cdot z$
+	\end{description}
+    
+    \item{Ordnung}
+	\begin{description}
+		\setlength\itemsep{0em} %% Kompakter als vorher -- Am besten irgendwo in die Configs einfügen
+	
+    	\item{O-1} Reflexivität: $\forall x\in\R: x \leq x$
+		\item{O-2} Transitivität: $\forall x,y,z\in\R: x\leq y \wedge y \leq z \implies x \leq z$
+		\item{O-3} Identitivität:$\forall x,y \in\R: x \leq y \wedge y \leq x \implies x = y$
+		\item{O-4} Die Ordnung ist total: $\forall x,y \in\R: x\leq y$ oder $y\leq x$
+	\end{description}
+    
+    \item{Konsistenz}
+	\begin{description}
+    	\setlength\itemsep{0em} %% Kompakter als vorher -- Am besten irgendwo in die Configs einfügen
+	
+		\item{K-1} $\forall x,y,z\in\R: x\leq y \implies x+z \leq y+z$
+        \item{K-2} $\forall x,y,z\in\R: x\leq y \implies x*z \leq y*z$
+	\end{description}
+    
+    \item{Ordnungsvollständigkeit}
+	\begin{description}
+		\item{V} Für je zwei nicht leeren Mengen $A,B\subset\R$ mit 
+        $$\forall a\in A, \forall b\in B: a\leq b$$
+        gibt es ein $c\in\R$ sodass gilt
+        $$\forall a\in A, \forall b\in B: a\leq c\leq b$$
+	\end{description}
+    
+    \item{\underline{Folgerungen der Axiomen:}} 
+    \begin{enumerate}
+    \item $\forall x \in \mathbb{R}$: $(-1)\cdot x = -x$
+	\item $(-1)\cdot (-1)=1$
+	\item $\forall x \in \mathbb{R}: x^2 \geq 0$
+	\item $0 < 1 < 2 < ...$
+	\item $\forall x > 0: x^{-1} > 0$
+	\item $\forall x,y \geq 0: x \leq y \Leftrightarrow x^2 \leq y^2$
+	\item  Es gibt $c\in \mathbb{R}$ mit $c^2 = 2$
+	\item  $x\leq |x|, \forall x \in X$
+	\item  $|xy|=|x||y|, \forall x,y \in \mathbb{R}$
+    
+    
+    \end{enumerate}
+    
+\end{description}
+
+\begin{theorem}[Young]
+Für $x,y \in R$, $ \epsilon > 0$ gilt, \tab
+$$
+2|x\cdot y| \leq \epsilon x^2 + \frac{1}{\epsilon}y^2
+$$
+\end{theorem}
+
+\begin{theorem}[Bernoullische Ungleichung]
+Für $x>-1$ und $n\in \N$ gilt
+$$(1+x)^n \geq nx$$
+\end{theorem}
+
+% Archimedisches Prinzip
+\begin{definition}[Archimedisches Prinzip]
+Die natürlichen Zahlen sind nach oben hin nicht beschränkt:
+	$$ \forall 0 < b\in \R, \exists n \in \N: b < n.$$
+\end{definition}
+
+\begin{theorem}[Fundamentalsatz der Algebra]
+Jedes Polynom von Grad $n\geq q$ hat in $\C$ eine Nullstelle.
+\end{theorem}
+
+\section{Supremum und Infimum}
+ %% Ersetz mich mit der Definition des Supremums. Bitte inklusive B2) aus der Übung.
+ 	\begin{definition}[obere / untere Schranke]
+    Sei $X \subset \mathbb{R}$.
+    Eine reelle Zahl $y$ mit $\forall x \in X: x \leq y (x\geq y)$ heisst \textbf{obere (untere) Schranke} von X.
+    Existiert eine solche Schranke, so ist X \textbf{nach oben (unten) beschränkt}.
+    \end{definition}
+ 
+ 	\begin{definition}[Supremum / Infimum]
+    Jede nicht leere und nach oben beschränkte Teilmenge $X \subset \mathbb{R}$ besitzt eine eindeutige kleinste obere Schranke, genannt Supremum.
+    (Infimum analog)
+    
+	Für eine nach oben (unten) unbeschränkte Teilmenge $X \subset \mathbb{R}$ gilt: $sup(X) = \infty$ ($inf(X) = -\infty$).
+    
+    Ist $sup(X) \in X$ so wird das \textbf{Supremum in X angenommen}.
+	\end{definition}
+    
+    \begin{concept}[Sup/Inf]
+        \item{A) Obere Schranke}
+
+    			\item{} Seien $A, S\subset\R$ nicht leere Mengen mit
+    			$$\forall a\in A,s\in S: a\leq s$$ 
+				dann ist S die Menge aller oberen Schranken von A.
+
+    \item{B) Kleinste obere Schranke}
+
+    		\item{B1)} Supremum von A oder Sup(A) ist definiert als:
+    			$$\forall o \in S, s:= Sup(A): s \leq o$$ 
+    		\item{B2)} Alternativ auch: 
+    			$$\forall \varepsilon > 0,\exists a\in A:a > s - \varepsilon$$
+	\end{concept}
+    
+    \begin{theorem} [Sup/Inf beschränkter Mengen]
+    Jede nach oben/unten beschränkte Teilmenge besitzt ein Supremum/Infimum.
+    \end{theorem}
+
+\noindent\begin{boxedminipage}{225pt}
+		\underline{\textbf{Rezept:}} \textit{Supremum zeigen}
+		
+ 		Sei A eine Menge\\
+		\textbf{1.} "Rate" $supA = s$\\
+		\textbf{2.} Zeige:\ $\forall a \in A, a \leq s$\newline
+		\textbf{3.} Zeige entweder:\ $\forall t \textrm{ obere Schranken}, s \ \leq t$\newline
+		\tab \tab oder:\  $\forall \varepsilon \textgreater 0 \quad \exists a \in A, |s-\varepsilon| \textless a$
+		
+	\end{boxedminipage}\\
+
+%\end{multicols}

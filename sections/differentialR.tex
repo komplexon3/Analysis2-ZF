@@ -1,0 +1,229 @@
+\chapter{Differentialrechnung auf $\R$}
+\section{Differential und seine Regeln}
+
+\begin{definition}[Differenzierbarkeit]
+	Eine Funktion $f$ heisst \textbf{differenzierbar} an der Stelle $x_0$, falls der Grenzwert
+	$$\lim_{x \to x_0} \frac{f(x)- f(x_0)}{x-x_0}=: f'(x_0) =: \frac{df}{dx}(x_0)$$
+    
+existiert.
+	
+	Eine Funktion $f$ heisst \textbf{differenzierbar}, falls der obige Grenzwert an jeder Stelle des Definitionsbereich von $f$ existiert.
+\end{definition}
+
+
+\begin{theorem}
+Ist $f$ an der Stelle $x_0$ differenzierbar, so ist $f$ an der Stelle $x_0$ auch stetig.
+\\\\
+Es folgt: Ist $f$ auf $(a,b), a,b\in \R$ differenzierbar, so ist $f$ auf $(a,b)$ stetig.
+\end{theorem}
+
+\begin{theorem}
+Sei $(f_n)$ eine Folge in $C^1(\Omega)$ mit $f_n \to^{glm.} f$, $f'_n \to^{glm.} g$ $(n\to \infty)$ und $f,g: \ \Omega \to \R$.
+Dann gilt: $f\in C^1(\Omega)$ und $f' = g$.
+\end{theorem}
+
+\begin{theorem}[Regeln zum Differenzieren]
+	%\textbf{Satz 5.1.2}
+    Seien $f,g: \Omega \rightarrow \mathbb{R}$ an der Stelle $x_0$ differenzierbar. Dann ebenfalls $f+g,f\cdot g$ und falls $g(x_0) \neq 0$ auch $\frac{f}{g}$. Zudem gilt:
+
+	\begin{enumerate}
+		\item $(f+g)'(x_0)= f'(x_0)+g'(x_0)$
+	
+		\item $(fg)'(x_0) = f'(x_0)g(x_0)+f(x_0)g'(x_0)$
+		
+		\item  $(\frac{f}{g})'(x_0)= \frac{f'(x_0)g(x_0)-f(x_0)g'(x_0)}{g^2(x_0)}$
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Kettenregel]
+	%\textbf{Satz 5.1.3 (Kettenregel)}
+    Seien $f$ an der Stelle $x_0$ und $g$ an der Stelle $y_0 = f(x_0)$ differenzierbar. Dann ist deren Verknüpfung $g \circ f$ an der Stelle $x_0$ differenzierbar. Zudem gilt:
+	
+	\centering{$(g\circ f)'(x_0) = g'(f(x_0))f'(x_0)$}
+	
+\end{theorem}
+
+\begin{concept}[Kurvendiskussion]
+Sei $f: \Omega \rightarrow \mathbb{R}$, eine hinreichend oft differenzierbare Funktion, $x_0 \in \Omega$ und  $P_0 := (x_0,f(x_0))$.
+	\begin{enumerate}
+		\item Falls $f'= 0 \Rightarrow f$ ist konstant.
+		
+        \item Falls $f' \geq 0$ (bzw. $>0$) auf $]a,b[ \Rightarrow f$ ist (streng) monoton wachsend. 
+	\end{enumerate}
+    
+    Des weiteren gilt:
+\begin{itemize}
+\item $x_0$ ist \textbf{Nullstelle} von $f$ \ $\iff$ \ $f(x_0) = 0$
+\item $f'(x) > 0$ $\Rightarrow$ $f$ ist \textbf{streng monoton wachsend}
+\item $f'(x) < 0$ $\Rightarrow$ $f$ ist \textbf{streng monoton fallend}
+\item $f$ hat bei $x_0$ ein \textbf{lokales Maximum}  \ $\Leftrightarrow$ \ $f'(x_0) = 0$ und $f''(x_0) < 0$
+\item $f$ hat bei $x_0$ ein \textbf{lokales Minimum}  \ $\Leftrightarrow$ \ $f'(x_0) = 0$ und $f''(x_0) > 0$
+\item $P_0$ ist ein \textbf{Wendepunkt}  \ $\Leftrightarrow$ \ $f''(x_0) = 0$ und $f'''(x_0) \neq 0$
+\item $P_0$ ist ein \textbf{Sattelpunkt}  \ $\Leftrightarrow$ \ $f'(x_0) = f''(x_0) = 0$ und $f'''(x_0) \neq 0$\\
+\end{itemize}
+\end{concept}
+
+\begin{corollary}[Genaueres Kriterium für lokale Minima/Maxima]
+Sei $f\in C^m(\Omega)$ und $x_0\in \Omega$. Angenommen, die ersten m-1 Ableitungen von $f$ in $x_0$ sind alle 0, dann gilt:
+\begin{enumerate}
+\item Falls m ungerade und $x_0$ ein lokales Minimum/Maximum, so folgt $f^{(m)}(x_0)=0$.
+\item Falls m gerade und $f^{(m)}>0$ ($< 0$), so ist $x_0$ ein lokales Minimum (Maximum) von $f$.
+\end{enumerate}
+\end{corollary}
+
+\section{Der Mittelwertsatz und Folgerungen}
+
+\begin{theorem}[Mittelwertsatz]
+    Seien $-\infty < a < b < +\infty$. Sei $f: [a,b] \rightarrow \mathbb{R}$ stetig und auf $]a,b[$ differenzierbar.
+    Dann gilt
+
+$$\exists x_0 \in ]a,b[: \ f'(x_0) = \frac{f(b)-f(a)}{b-a}$$
+oder auch
+$$\exists x_0 \in ]a,b[: f(b) = f(a) + f'(x_0)(b-a)$$
+\end{theorem}
+
+\begin{theorem}[Bernoulli- de l'Hôpital]
+	Seien $f,g: \ ]a,b[ \rightarrow \mathbb{R}$ stetig und differenzierbar in $]a,b[$ mit $g'(x)\neq 0, \forall x\in ]a,b[$. Weiter sei $f(a)= 0 = g(a)$, und es existiere der Grenzwert
+	
+	\centering{$\lim_{x \to a}\frac{f'(x)}{g'(x)}$}
+		
+	\raggedright{So gilt:}
+	
+	\centering{$\lim_{x \to a}\frac{f(x)}{g(x)}=\lim_{x \to a}\frac{f'(x)}{g'(x)}$}
+
+In anderen Worten. Falls $\lim\frac{f(x)}{g(x)}$ von der Form ''$\frac{0}{0}$'' oder ''$\frac{\infty}{\infty}$'' ist, dann ist
+$\lim\frac{f(x)}{g(x)}=\lim\frac{f'(x)}{g'(x)}$.
+\end{theorem}
+
+\begin{theorem}[Umkehrsatz]
+Sei f: $]a,b[ \rightarrow \mathbb{R}$ differenzierbar mit f' $>$  0 auf $]a,b[$, und seien
+	
+	\centering{$-\infty  \leq c = inf_{a<x<b} f(x) < sup_{a<x<b} f(x) = d 		\leq \infty$}
+
+	\raggedright Dann ist f: $]a,b[ \rightarrow ]c,d[$ bijektiv und die 		Umkehrfunktion $f^{-1}:  ]c,d[ \rightarrow \mathbb{R}$ ist differenzierbar mit
+
+	\centering $(f^{-1})'(f(x)) = (f'(x))^{-1},  \forall x \in ]a,b[,$
+    
+    \raggedright bzw.
+    
+    \centering $(f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))},  \forall y \in ]c,d[,$
+\end{theorem}
+
+\begin{definition}[$C^k$-Räume]
+Eine Funktion $f: \Omega \rightarrow \mathbb{R}$ heisst von der Klasse $C^{(m)}(\Omega)$ ($m \in \mathbb{N}_0$), $f \in C^{(m)}$, falls sie auf $\overline{\Omega}$ $m$-mal differezierbar ist und $f^{(m)}$ stetig ist. Man sagt, dass $f$ von der Klasse $C^\infty$ (glatte Funktion) ist, falls $f$ von der Klasse $C^m$ für alle $m \in \mathbb{N_0}$ ist. 
+\end{definition}
+
+\begin{definition}[Konvexität]
+Eine Funktion $f: ]a,b[ \to \R$ heisst \textbf{konvex}, wenn für alle $x_0, x_1 \in ]a,b[$, $0\leq t \leq 1$:
+$$f(tx_1 + (1-t)x_0) \leq tf(x_1) + (1-t)f(x_0)$$
+\end{definition}
+
+\begin{theorem}
+Ist $f$ zweimal diffbar und $f''$ stetig, so sind äquivalent:
+\begin{enumerate}
+\item $f$ ist konvex
+\item $f'$ ist monoton wachsend
+\item $f'' \geq 0$
+\item Der Graph von $f$ liegt oberhalb jeder seiner Tangenten.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Jensen's Ungleichung]
+Sei $f: \ ]a,b[ \to \R$ konvex.
+Dann gilt für beliebige Punkte $x_1, .... , x_n \in ]a,b[$ und Zahlen $0\geq t_1,...,t_n \geq 1$ mit $\sum_{i=1}^n t_i = 1$ die Ungleichung:
+$$f\Big(\sum_{i=1}^n t_i x_i \Big) \ \leq \ \sum_{i=1}^n t_i f(x_i)$$
+
+\textbf{Beweis:} Induktion über Konvexität
+\end{theorem}
+
+\section{Taylor}
+
+\begin{theorem}[Taylor]
+Sei $f\in C^{m-1}([a,b])$ auf $]a,b[$ m-mal differenzierbar. Dann folgt:
+
+$$\exists \xi \in ]a,b[:
+f(b) = f(a) + f'(a)(b-a) + f''(a)\frac{(b-a)^2}{2!} + ... +$$
+$$f^{(m-1)}(a)\frac{(b-a)^{m-1}}{(m-1)!} + f^{(m)}(\xi)\frac{(b-a)^m}{m!}$$
+\end{theorem}
+
+\begin{definition}
+Wir definieren das \textbf{Taylor-Polynom m-ter Ordnung} als:
+$$T_mf(b;a) = f(b) = f(a) + f'(a)(b-a) + f''(a)\frac{(b-a)^2}{2!} + ... +$$
+$$f^{(m-1)}(a)\frac{(b-a)^{m-1}}{(m-1)!} + f^{(m)}(a)\frac{(b-a)^m}{m!}$$
+
+Das Taylor-Polynom können wir natürlich auch noch als Summenformel schreiben:
+$$T_mf(b;a) = \sum_{k=0}^m f^{(k)}\cdot\frac{(b-a)^k}{k!}$$
+\end{definition}
+
+\begin{concept}[Abschätzung des Fehlers]
+Die Größe unseres Fehlers wollen wir jetzt abschätzen.
+Dafür definieren wir ihn erstmal:
+
+$$r_mf(b;a) := f(b)-T_mf(b;a)$$
+
+%Ob ich hier b oder x schreibe, ist egal. Wir müssen jetzt nur das Intervall $[a,x]$ betrachten.
+Der Fehler hier kann natürlich negativ werden, also nehmen wir den Betrag. Bei der Subtraktion der beiden riesigen Formeln bleibt nur jeweils der letzte Term stehen und wir kriegen:
+$$\exists \xi \in ]a,b[: |r_mf(b,a)| = |f^{(m)}(\xi)\frac{(b-a)^m}{m!}-f^{(m)}(a)\frac{(b-a)^m}{m!}|$$
+$$\leq sup_{\mu \in ]a,[b}|(f^{(m)}(\mu)-f^{(m)}(a))\frac{(b-a)^m}{m!}|$$
+$$\leq sup_{\mu \in ]a,[b}|(f^{(m)}(\mu)-f^{(m)}(a))|\frac{(b-a)^m}{m!}$$
+weil $b>a$ in unserem Fall,
+$$\leq sup_{c \in ]a,b[}|f^{(m+1)}(c)|\frac{(b-a)^{m+1}}{(m+1)!}$$
+
+In der letzten Zeile haben wir den Mittelwertsatz verwendet, was natürlich nur geht, wenn die Funktion mindestens (m+1)-mal diffbar ist.
+\end{concept}
+
+\begin{theorem}[Abschätzung der Fehlers]
+Ist $I \subset \R$ ein offenes Intervall, $m\in \N$ \& $f\in C^{m+1}(I): I \to \R$.
+Dann gilt für $a, b \in I$:
+$$r_m(b;a) = \int_a^b\frac{(b-t)^m}{m!} \cdot f^{(m+1)}(t) dt$$
+\end{theorem}
+
+\begin{example}[log(3/2) at 1]
+
+$$\log(3/2) \approx log(1) + log'(1)\cdot(3/2 - 1) + log''(1)\cdot\frac{(3/2-1)^2}{2!}$$
+$$= 0 + \frac{1}{1}\cdot\frac{1}{2} - \frac{1}{1^2}\cdot\frac{\frac{1}{2^2}}{2}$$
+$$= \frac{1}{2} - \frac{1}{8} = \frac{3}{8}$$
+
+Und wie gut ist diese Näherung jetzt? Dafür berechnen wir mit der Formel von oben den Fehler:
+$$|r_2log(\frac{3}{2};1)|$$
+$$\leq sup_{c \in ]1,3/2[}|log'''(c)|\cdot\frac{(\frac{3}{2}-1)^{3}}{3!}$$
+$$= sup_{c \in ]1,3/2[}|\frac{2}{c^3}|\cdot \frac{1}{48} = \frac{2}{1^3}\cdot\frac{1}{48} = \frac{1}{24}$$
+
+Wir haben unseren gesuchten Wert also auf $\frac{1}{24}$ genau getroffen.
+$\Rightarrow log(\frac{3}{2})\in [\frac{3}{8}-\frac{1}{24}, \frac{3}{8}+\frac{1}{24}] = [\frac{1}{3}, \frac{5}{12}]$
+\end{example}
+
+\section{Newton-Raphson-Verfahren}
+Das Newton-Raphson Verfahren dient dazu eine Lösung für die Gleichung $f(x) = 0$ zu finden.\\
+Bedingungen:
+
+\begin{enumerate}
+	\item $f$ ist stetig
+	\item  $f$ ist differenzierbar
+	\item  $f'$ ist stetig
+\end{enumerate}
+
+Zudem machen wir folgende Annahmen:
+
+\begin{enumerate}
+	\item $f: \ ]a,b[\rightarrow \mathbb{R}$ erfüllt $f(a) < 0$ und $f(b) > 0$ (oder umgekehrt)
+	
+	\item $f'(x) \neq 0$ für $a<x<b$
+\end{enumerate}
+
+
+\underline{\textbf{Input}}
+
+$x_0 \in ]a,b[$\\
+
+\underline{\textbf{Induktion}}
+
+
+$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+
+
+Hiermit lässt sich folgender Satz zeigen:
+
+\emph{Wenn $x_0$ nah genug an der Lösung der Gleichung $f(x) = 0$ ist, dann ist die Folge $(x_n)_{n\in \mathbb{N}_0}$ definiert und konvergiert gegen die Lösung $y$.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

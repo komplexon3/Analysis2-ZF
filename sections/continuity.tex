@@ -1,0 +1,111 @@
+\chapter{Stetigkeit}
+
+\begin{definition}[Abschluss]
+Sei $\Omega \subset \R ^d$.
+Der \textbf{Abschluss} von $\Omega$ ist die Menge
+$$\overline{\Omega} = \{x \in \R^d; \ \exists(x_k)_{k\in \mathbb{N}}: \ x_k \rightarrow x \quad (k \rightarrow \infty)\}$$
+
+In anderen Worten, ein Intervall kann abgeschlossen werden, indem man $\sup I$ \& $\inf I$ hinzunimmt, falls sie in $\R$ liegen.
+
+Seien $a,b \in \R$, so sind $[a,b]$, $[a,\infty[$ \& $]-\infty,b]$ abgeschlossen.
+
+Offenbar gilt $\Omega \subset \overline{\Omega}$
+\end{definition}
+
+\begin{definition}[Kompakt]
+	Ein Intervall ist \textbf{kompakt}, wenn er \textbf{abgeschlossen} und \textbf{begrenzt} ist.
+    \\\\
+    (Ein Intervall $K\subset \R$ heisst kompakt, wenn jede Folge in $K$ einen Häufigkeitspunkt besitzt.)
+\end{definition}
+
+\begin{definition}[Grenzwert einer Funktion]
+Sei $f: \Omega \rightarrow \R^n$, $x_0 \in \bar{\Omega}$, $a \in \R^n$.
+Die Funktion $f$ hat an der Stelle $x_0$ den Grenzwert $a$, falls für \textbf{jede Folge} $(x_k)_{k \in \N}$ in $\Omega$ mit $x_k \rightarrow x_0 (k \to \infty)$ gilt $f(x_k) \to a (k \rightarrow \infty)$.\\
+Man schreibt: $$\lim_{x \to x_0} f(x) = a$$
+
+Insberondere müssen der \textbf{linke} und der \textbf{rechte Grenzwert} übereinstimmen: 
+$$\lim_{x \to x_0^-} f(x) = \lim_{x \to x_0^+} f(x) = \lim_{x \to x_0} f(x) = a$$
+\end{definition}
+
+\begin{definition}[Stetigkeit in einem Punkt]
+Sei $f: \Omega \rightarrow \R^n $ mit $\Omega \in \R^d$ eine Funktion. \\
+Die Funktion $f$ ist genau dann stetig in $\xi$, wenn für \textbf{jede gegen} $\xi$ konvergente Folge $(x_k)_{k \in \N}$, mit Elementen $x_k \in X$, die Folge $(f(x_k))_{k \in \N}$ gegen $f(\xi)$ konvergiert.\\
+
+\textbf{Alternative Definition:} Die Funktion $f$ ist genau dann stetig in $\xi$, wenn zu jedem $\epsilon > 0$ ein $\delta > 0$ existiert, so dass für alle $x \in X$ mit $|x - \xi| < \delta$ gilt:
+$$|f(x) - f(\xi)| < \epsilon$$
+
+Die Funktion $f$ heisst an der Stelle $x_0 \in \bar{\Omega}\backslash \Omega$ \textbf{stetig ergänzbar}, falls $\lim_{x \to x_0} f(x) =: a$ existiert. (In diesem Fall ist die um den Punkt $(x_0,a)$ ergänzte Funktion offenbar stetig.)
+\end{definition}
+
+\begin{definition}[Stetigkeit einer Funktion]
+Eine Funktion $f$ heisst stetig, falls sie in jedem Punkt des Definitionsbereiches stetig ist.\\
+\end{definition}
+
+\begin{theorem}
+Eine monoton wachsende Funktion ist in maximal abzählbaren Punkten unstetig.
+\end{theorem}
+
+\begin{theorem}[Rechnen mit stetigen Funktionen]
+Seien $f_1,f_2: \Omega \to \R$ stetig, sei $\alpha\in\R$.\\
+Die Funktionen $(f_1 + f_2)$ sowie $\alpha f_1$, mit $\alpha \in \R$ beliebig, sind stetig.\\
+Die stetigen Funktionen bilden einen Vektorraum.
+
+Außerdem gilt:\\
+Seien $f_1,f_2: \Omega \to \R$ stetig in $x_0\in\Omega$, sei $\alpha\in\R$.\\
+Dann ist $f_1\cdot f_2$ stetig in $x_0$ und für $f_1(x_0)\neq 0$ ist auch $\frac{1}{f_1(x)}$ stetig in $x_0$.
+\end{theorem}
+
+\begin{theorem}[Stetigkeit unter Verknüpfung]
+Seien $f_1:Q\to \Omega$, $f_2: \Omega \to \R$ stetig.
+$\Rightarrow f_2\circ f_1$ ist ebenfalls stetig.
+\end{theorem}
+
+\begin{theorem}
+Eine stetige Funktion nimmt auf einem kompakten Intervall ein Minimum und ein Maximum an.
+\end{theorem}
+
+\begin{theorem}[Zwischenwertsatz]
+Seien $-\infty < a < b < \infty$ und sei $f: [a, b] \rightarrow \R$ stetig, $f(a) \leqslant f(b)$.\\
+Dann gibt es zu jedem $y \in [f(a),f(b)]$ ein $x \in [a,b]$ mit $f(x) = y$.
+\end{theorem}
+
+\begin{theorem}[Umkehrsatz für kompakte Intervalle]
+Sei $f:[a,b]\rightarrow\R$ stetig und streng monoton wachsend.
+
+Dann ist das Bild von f das kompakte Intervall $[f(a),f(b)]$, $f$ ist bijektiv und $f^{-1}$ ist ebenfalls stetig.
+\end{theorem}
+
+\begin{theorem}[Umkehrsatz für offene Intervalle]
+Sei $f:]a,b[\rightarrow\R$ stetig und streng monoton wachsend mit monotonen Limites: $$-\infty\leq c:=\lim_{x\searrow a}f(x) <\lim_{x\nearrow b}f(x)=:d\leq \infty$$ (Beide Limites existieren, können aber auch $\infty$ sein.)
+
+Dann ist das Bild von f das offene Intervall $]c,d[$, $f$ ist bijektiv und $f^{-1}$ ist ebenfalls stetig.
+\end{theorem}
+
+\section{Konvergenz von Funktionenfolgen}
+
+\begin{definition}[Punktweise Konvergenz einer Funktionenfolge]
+Die Folge $(f_k)_{k\in \N}$ konvergiert punktweise gegen f,
+falls gilt:
+$$\forall x \in \Omega: \ f_k(x)\to f(x) \ (k \to \infty)$$
+
+Alternativ:
+$$\forall x \in \Omega \forall \epsilon > 0 \exists N \forall n > N: \ ||f_n(x) - f(x)|| < \epsilon$$
+\end{definition}
+
+\begin{definition}[Gleichmäßige Konvergenz einer Funktionenfolge]
+Die Folge $(f_k)_{k\in \N}$ konvergiert gleichmässig gegen f, falls
+$$ \lim_{k \to \infty} \sup_{x \in \Omega} |f_k(x) - f(x)| \to 0$$
+
+Alternativ:
+$$\forall \epsilon > 0 \exists N \in \mathbb{N}: \ \forall n > N \forall x \in \Omega: \ ||f_n(x) - f(x)|| < \epsilon$$
+
+Die gleichmässige Konvergenz impliziert die punktweise Konvergenz.
+\end{definition}
+
+\begin{theorem}[glm. Konv. stetiger Funktionen]
+Seien $f_k : \Omega \subset \R^{d} \to \R^{n}$ stetig, $k \in \N$. Weiter gelte $f_k \to f$ ($k \to \infty$) \textbf{gleichmässig} zu einem $f : \Omega \to \R^n$. Dann ist $f$ \textbf{stetig}.
+\end{theorem}
+
+\begin{corollary}
+Für $|x|<\rho$ (also im Inneren des Konvergenzkreises) sind Potenzreihen stetige Funktionen.
+\end{corollary}
