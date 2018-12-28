@@ -49,12 +49,13 @@
 \end{concept}
 
 \begin{concept}[Solving ODEs with constant coeffs]
+    $ $\\
 	\begin{enumerate}
 		\item \textbf{Find homogenous solution (Euler-Ansatz)}
 			Replace all $y(x)$ with $e^{\lambda x}$ and derive all the resulting derivatives.
 			Then, divide by $e^{\lambda x}$. This gives you the \textbf{characteristic polynomial}.
 			Now compute all roots $\lambda_i$ and their multiplicity $m_i$.
-			From this, you can create a  base sol-space: $B = {x^{m_i-1}e^{\lambda x} | i \in \N, \ i \leq k}$.
+			From this, you can create a  base sol-space: $B = \{x^{m_i-1}e^{\lambda x} | i \in \N, \ i \leq k\}$.
 		\item \textbf{Find inhomogenous solution}
 			(Considering $y''+a_1y'(x) = g(x)$)
 			You are looking for a sol of the form: $y_p(x) = C_1(x)y_q(x) + C_2(x)y_2$, with $y_i(x)$ from Euler Ansatz and $C_i(x)$ satisfying the system 
