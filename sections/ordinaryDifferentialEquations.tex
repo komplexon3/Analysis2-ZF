@@ -88,8 +88,23 @@ Sind $a+c,b+c \in I$, gilt
 	\begin{enumerate}
 		\item \textbf{Find homogenous solution (Euler-Ansatz)}
 			Replace all $y(x)$ with $e^{\lambda x}$ and derive all the resulting derivatives.
-%			Then, divide by $e^{\lambda x}$. This gives you the \textbf{characteristic polynomial}.
-%			Now compute all roots $\lamda_i$ and their multiplicity $m_i$.
-%			Create base for solution: $B = {x^{m_i-1}e^{\lambda x} | i \in \N, \ i \leq k}$.
-	\end{enumatate}
+			Then, divide by $e^{\lambda x}$. This gives you the \textbf{characteristic polynomial}.
+			Now compute all roots $\lambda_i$ and their multiplicity $m_i$.
+			From this, you can create a  base sol-space: $B = {x^{m_i-1}e^{\lambda x} | i \in \N, \ i \leq k}$.
+		\item \textbf{Find inhomogenous solution}
+			(Considering $y''+a_1y'(x) = g(x)$)
+			You are looking for a sol of the form: $y_p(x) = C_1(x)y_q(x) + C_2(x)y_2$, with $y_i(x)$ from Euler Ansatz and $C_i(x)$ satisfying the system 
+			$$\begin{bmatrix} y_1(x) & y_2(x) \\ y'_1(x) &  y'_2(x)\end{bmatrix} \cdot \begin{bmatrix}C_1(x) \\  C_2(x)\end{bmatrix} = \begin{bmatrix}0 \\ g(x)\end{bmatrix}$$
+			We check that the determinand of the system matrix doesn't vanish, meaning that a unique sol exists.
+			We find the coefficients by using one of two options:	
+			\begin{enumerate}
+				\item Inversion of the matrix and then integrating:
+					$$\begin{bmatrix} C'_1(x) \\ C'_2(x)\end{bmatrix} = \frac{1}{y_1(x)y'_2(x) - y_2(x)y'_1(x)}\begin{bmatrix} y_1(x) & y_2(x) \\ y'_1(x) & y'_2(x) \end{bmatrix} \cdot \begin{bmatrix}C'_1(x) \\ C'_2(x) \end{bmatrix} = \begin{bmatrix} 0 \\ g(x) \end{bmatrix}$$
+				\item or by directly using
+					$$y_p(x) = -y_1(x) \int \frac{y_2(x)g(x)}{y_1(x)y'_2(x) - y_2(x)y'_1(x)}dx + y_2(x) \frac{y_1(x)g(x)}{y_1(x)y'_2(x) - y_2(x)y'_1(x)}dx$$
+			\end{enumerate}
+		\item The general solutions are obtained by $y(x) = y_h(x) + y_p(x)$.
+	\end{enumerate}
 \end{concept}
+
+
