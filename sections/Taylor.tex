@@ -26,8 +26,7 @@ Dafür definieren wir ihn erstmal:
 
 $$r_mf(b;a) := f(b)-T_mf(b;a)$$
 
-%Ob ich hier b oder x schreibe, ist egal. Wir müssen jetzt nur das Intervall $[a,x]$ betrachten.
-Der Fehler hier kann natürlich negativ werden, also nehmen wir den Betrag. Bei der Subtraktion der beiden riesigen Formeln bleibt nur jeweils der letzte Term stehen und wir kriegen:
+%Ob ich hier b oder x schreibe, ist egal. Wir müssen jetzt nur das Intervall $[a,x]$ betrachtener Fehler hier kann natürlich negativ werden, also nehmen wir den Betrag. Bei der Subtraktion der beiden riesigen Formeln bleibt nur jeweils der letzte Term stehen und wir kriegen:
 $$\exists \xi \in ]a,b[: |r_mf(b,a)| = |f^{(m)}(\xi)\frac{(b-a)^m}{m!}-f^{(m)}(a)\frac{(b-a)^m}{m!}|$$
 $$\leq sup_{\mu \in ]a,[b}|(f^{(m)}(\mu)-f^{(m)}(a))\frac{(b-a)^m}{m!}|$$
 $$\leq sup_{\mu \in ]a,[b}|(f^{(m)}(\mu)-f^{(m)}(a))|\frac{(b-a)^m}{m!}$$

@@ -1,0 +1,65 @@
+\chapter{Ordinary Differential Equations}
+% REFERENCE
+\section{Stammfunktionen}
+\begin{definition}[Stammfunktion einer Funktion]
+
+Sei $f:]a,b[\rightarrow\R$ stetig, also $f\in C^0(]a,b[)$.
+Eine Funktion $F\in C^1(]a,b[)$ heißt Stammfunktion von f gdw. $\forall x\in ]a,b[: F'(x)=f(x)$ gilt.
+\end{definition}
+
+\begin{remark}
+Ist $f$ integrierbar, so muss nicht zwingenderweise eine stetige Stammfunktion existieren.
+\end{remark}
+
+\begin{theorem}[Konstante]
+Seien $F_1, F_2: ]a,b[\rightarrow \R$ Stammfunktionen von $f\in C^0(]a,b[)$. Dann gilt $F_1-F_2 = c\in\R$.
+\end{theorem}
+\begin{corollary}
+
+Sei $I\subset \mathbb{R}$ ein Intervall, sei $f:I\rightarrow \mathbb{R}$ eine stetige Funktion, und seien $a,b \in I$ mit $a<b$ und $c\in \mathbb{R}\setminus\{0\}$.
+
+Dann gilt folgendes:
+
+Sind $a+c,b+c \in I$, gilt
+	\begin{enumerate}
+		\item $\int_{a}^{b}f(t+c)dt = \int_{a+c}^{b+c}f(x)dx$
+	\end{enumerate}
+	
+	\textit{Sind $ca,cb \in I$, gilt}
+	\begin{enumerate}[resume]
+		\item $\int_{a}^{b}f(ct)dt = \frac{1}{c}\int_{ca}^{cb}f(x)dx$
+	\end{enumerate}	
+
+	\textit{Ist $f$ stetig differenzierbar und $f(t) \neq 0,\ \forall t \in [a,b]$, gilt}
+	\begin{enumerate}[resume]
+	\item $\int_{a}^{b}\frac{f'(t)}{f(t)}dt = \log(|f(b)|)- \log(|f(a)|)$
+	\end{enumerate}	
+\end{corollary}
+
+\begin{theorem}[Local existence of unique sol]
+	Suppose $F: \mathbb{R}^3 \rightarrow \mathbb{R}$ diffbar, $x_0 \in \mathbb{R}, \  (y_0,y_0') \in \mathbb{R}$.
+	Then the ODE $F(x,y,y') = 0$ has a unique sol $f$ on "largest' open interval $I$ containing $x_0$ st $f(x_0)= y_0, \ f'(x_0)=y_0'$.
+\end{theorem}
+
+\begin{definition}[Linear differential equations]
+	Let $I \subset \mathbb{R}$ be an open interval and $k \geq 1$. 
+	A \textbf{homogenous} linear ODE is defined as
+	$$ y^{(k)} + a_{k-1}y^{(k-1)} + ... + a_1y' + a_0y = 0 $$
+	, where $a_i$ are compex functions on $I$.
+	A \textbf{inhomogenous} linear ODE is defined as
+	$$ y^{(k)} + a_{k-1}y^{(k-1)} + ... + a_1y' + a_0y = b$$
+	, where $b$ is a compex funtion on $I$.
+\end{definition}
+
+\begin{theorem}
+	Consider a linear ODE. The following holds:
+	\begin{itemize}
+		\item Set $S$ of $k$-diffbar sols to the ODE is a subspace of all complex functions defined on $I$.
+		\item $dim(S)=k$and $\forall x_0 \in I \ \forall (y_0,...,y_{k-1}) \in C^k$ exists a \textbf{unique} $f\in S$ st $f(x_0) = y_0, \ ..., \ f^{(k-1)} = y_{k-1}$.
+		\item If $b \in C^0(I)$ is the inhom part of a ODE, then there exists a sol $f_0$ and $S_b$ is the set of solutions which have the form $f + f_0, \ f \in S$.
+		\item $\forall x_0 \in I \ \forall (y_0,...,y_{k-1}) \in C^k$ there a \textbf{unique} sol $f \in S_b$ st $f(x_0) = y_0, \ ..., \ f^{(k-1)} = y_{k-1}$.
+	\end{itemize}
+	\textbf{Remark:} If $b \neq 0$, $S_b$ is not a vector space. 
+\end{theorem}
+
+\end{document}
