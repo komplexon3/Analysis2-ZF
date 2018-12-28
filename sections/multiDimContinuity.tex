@@ -1,0 +1,41 @@
+\chapter{Continuity in multiple dimensions}
+
+\begin{definition}[Convergence in $R^n$]
+	Let $(x_k)_{k \in \N}$ with $x_k = (x_{k,q},...,x_{k_n}) \in \R^n$ and $y \ in \R^n$. 
+	The sequence $x_k \to^{k\to\infty} y$ iff one of the following holds:
+	\begin{enumerate}
+		\item For each i, the sequence $(x_{x,i})$ of real numbers converges to $y_i$.
+		\item The sequence of real numbers $||x_k - y||$ converges to 0.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Continuity]
+	Let $f: \Omega \subset \R^n \to \R^m$.
+	$f$ is continuous iff $\forall x_0 \in \Omega: \ \lim_{x \to x_0} f(x) = F(x_0)$.
+\end{definition}
+
+\begin{theorem}
+	If $lim_{k \to \infty}a_k = a$ and  $lim_{k \to \infty} b_k = b$, $lim_{k \to \infty}a_k+b_k = a=b$ and  $lim_{k \to \infty}a_kb_k = ab$ 
+\end{theorem}
+
+\begin{proposition}[Continuity of composition]
+	If $f: X \to Y$ and $g: Y \to \R^m$ are continuous, then so is their composite $g \circl f$.
+\end{proposition}
+
+\begin{definition}
+	\begin{enumerate}
+		\item $X \subset \R^n$ is \textbf{bounded} if the set ${||x|| \ | \ x \in X}$ is bounded in $R$.
+		\item $X \subset \R^n$ is \textbf{closed} if for every sequence $(x_k) \in X$ converging to $y \in \R^n$, $y \in X$.
+		\item $X \subset \R^n$ is \textbf{compact} if it is bounded and closed.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Let $f: \R^n \to \R^m$ be continuous.
+	For any closed set $Y \subset \R^m$, $f^{-1} = {x\in \R^n | f(x) \in Y} \subset \R^n$ is closed.
+\end{proposition}
+
+\begin{theorem}[Min & Max on compact sets]
+	Assume $f: X \subset \R^n$ continuous, with $X$ non-empty compact set.
+	Then $f$ is bounded and achieves its max and min.
+\end{theorem}
