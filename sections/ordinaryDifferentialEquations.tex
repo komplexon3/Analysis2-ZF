@@ -62,4 +62,34 @@ Sind $a+c,b+c \in I$, gilt
 	\textbf{Remark:} If $b \neq 0$, $S_b$ is not a vector space. 
 \end{theorem}
 
-\end{document}
+\begin{concept}[Solving first order ODEs]
+	$ $\\
+	\begin{enumerate}
+		\item \textbf{Solve homogenous part:}
+			Formally, transform $y' + ay = 0'$ into $y'/y = -a$ which implies $(log|y|)' = -a$.
+			Integration gives us
+			$$ y = z\exp(-A) $$
+			, where $z \in C$ and $A$ is primitive of $a$.
+		\item \textbf{Solve inhomogenous part:}
+			Consider $y' + ay = b$.
+			It sufficies to find a single sol $f_0$.
+			If no obvious sol comes to mind, use \textbf{variation of constant}:
+			Start with the homogenous sol $f(x) = z\exp(-A(x))$, where $z$ is now a function.
+			Form this we can deduce that
+			$$z'(x) = b(x)\exp(A(x))$$.
+			You now have an inhom sol: $f_0(x) = C(x)\exp(-A(x))$
+			, where $C(x)$ is prmitive of $z$
+		\item \textbf{Combine}
+			You can now obtain all solutions $f + f_0$.
+	\end{enumerate}
+\end{concept}
+
+\begin{concept}[Solving ODEs with constant coeffs]
+	\begin{enumerate}
+		\item \textbf{Find homogenous solution (Euler-Ansatz)}
+			Replace all $y(x)$ with $e^{\lambda x}$ and derive all the resulting derivatives.
+%			Then, divide by $e^{\lambda x}$. This gives you the \textbf{characteristic polynomial}.
+%			Now compute all roots $\lamda_i$ and their multiplicity $m_i$.
+%			Create base for solution: $B = {x^{m_i-1}e^{\lambda x} | i \in \N, \ i \leq k}$.
+	\end{enumatate}
+\end{concept}
