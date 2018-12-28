@@ -1,0 +1,29 @@
+\chapter{Multi-dim Differential Calculus}
+
+\begin{definition}[Partial Derivatives]
+	Consider $f: X \to \R^m$, with $X \subset \R^n$ open.
+	We say $f$ has a $partial dierivative$ on $X$ with respect ro the $i$-th variable if for all $x_0 \in X$, the function $g(t) = f(x_{0,1},...x_{0,i-1},t,x_{0,i+1},...x_{0,n})$ is diffbar by $t = x_{0,i}$.
+	
+	Notation: $\frac{\partial f}{\partial x_i}(x_0), \ \partial_{x_i}f(x_0), \ \partial_if(x_0)$
+	$$\partial_{x_i}(\partial_{x_i} f) = \partial_{x_i^2}f = \frac{\partial^2 f}{\partial x_i^2}, \ \partial_{x_i}(\partial_{x_j} f) = \partial_{x_i, x_j}f = \frac{\partial^2 f}{\partial x_i \partial x_j}$$
+\end{definition}
+
+\begin{theorem}[Multiple partial derivatives]
+	$$\forall x,y:\; \partial_i \partial_j f = \frac{\partial^2 f}{\partial i \partial j} = \partial_j \partial_i f$$
+\end{theorem}
+
+\begin{proposition}
+	If $f,g: X \to \R^m$, with $X \subset \R^n$ open:
+	\begin{enumerate}
+		\item $\partial_i(f+g) = \partial_i(f) + \partial_i(g)$
+		\item $\partial_i(fg) = \partial_i(f)g + \partial_i(g)f$
+		\item $\partial_i(f/g) = \frac{\partial_i(f)g - \partial_i(g)f}{g^2}$ (if $g \neq 0$)
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[Jacobi matrix]
+	Let $X \subset \R^n$ open and $f=(f_1(x), ..., f_m(x)): X \to \R^m$ with partial derivatives on $X$.
+	We define the Jacobi matrix $f$ at $x$ as:
+	$$J_f(x) = (\partial_jf_i(x))_{1 \leg i \leq m \\ 1 \leq j \leq n}$$
+\end{definition}
+

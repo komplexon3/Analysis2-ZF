@@ -19,14 +19,17 @@
 \end{theorem}
 
 \begin{proposition}[Continuity of composition]
-	If $f: X \to Y$ and $g: Y \to \R^m$ are continuous, then so is their composite $g \circl f$.
+	If $f: X \to Y$ and $g: Y \to \R^m$ are continuous, then so is their composite $g \circ f$.
 \end{proposition}
 
-\begin{definition}
+\begin{definition}[Bounded, closed, compact, open sets]
 	\begin{enumerate}
-		\item $X \subset \R^n$ is \textbf{bounded} if the set ${||x|| \ | \ x \in X}$ is bounded in $R$.
+		\item $X \subset \R^n$ is \textbf{bounded} if the set $\{||x|| \ | \ x \in X\}$ is bounded in $R$.
 		\item $X \subset \R^n$ is \textbf{closed} if for every sequence $(x_k) \in X$ converging to $y \in \R^n$, $y \in X$.
 		\item $X \subset \R^n$ is \textbf{compact} if it is bounded and closed.
+		\item $X \subset \R^n$ is \textbf{open} if $\forall x \in X$ there exists a $\delta > 0$ st:
+			$$\{y \in \R^n | \forall i: |x_i -y_i| < \delta\}$$
+			is contained in $X$.
 	\end{enumerate}
 \end{definition}
 
@@ -35,7 +38,14 @@
 	For any closed set $Y \subset \R^m$, $f^{-1} = {x\in \R^n | f(x) \in Y} \subset \R^n$ is closed.
 \end{proposition}
 
-\begin{theorem}[Min & Max on compact sets]
-	Assume $f: X \subset \R^n$ continuous, with $X$ non-empty compact set.
-	Then $f$ is bounded and achieves its max and min.
+\begin{theorem}[Min \& Max on compact sets]
+	If $f: X \subset \R^n$ continuous, with $X$ non-empty compact set, then $f$ is bounded and achieves its max and min.
 \end{theorem}
+
+\begin{proposition}
+	The set $X \subset \R^n$ is \textbf{open} iff its compement is closed.
+\end{proposition}
+
+\begin{corollary}
+	For $F: \R^n \to \R^m$ continuous and $Y \subset \R^m$ open, $f^{-1}(Y)$ is open.
+\end{corollary}
