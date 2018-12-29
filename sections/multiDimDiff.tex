@@ -27,16 +27,16 @@
 	$$J_f(x) = (\partial_j f_i(x))_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}}$$
 \end{definition}
 
-\begin{definition}[Gradiant]
-	Let $f: X \to \R, \  X \subset \R^n $ open be a function for which all derfivatives at $x_0\inX$ exist.
+\begin{definition}[Gradient]
+	Let $f: X \to \R, \  X \subset \R^n $ open be a function for which all derivatives at $x_0\in X$ exist.
 	Its gradient is:
-	$$\nabla f(x_0) = \begin{matrixb} \partial_1 f(x_0) \\ ... \\ \partial_n f(x_0) \end{matrixb}$$
+	$$\nabla f(x_0) = \begin{bmatrix} \partial_1 f(x_0) \\ ... \\ \partial_n f(x_0) \end{bmatrix}$$
 \end{definition}
 
 \begin{definition}[Differential]
 	Let $f: X \to \R^m, \  X \subset \R^n $ open and $u: \R^n \to \R^m$ linear.
 	$f$ is differentiable at $x_0 \in X$ with differential $Df(x_0) = df(x_0) = u$ if
-	$$\Lim{\substack{x \to x_0 \\ x \neq x_0}} \frac{1}{||x-x_0||}(f(x) - f(x_0)) = 0$$
+	$$\lim_{\substack{x \to x_0 \\ x \neq x_0}} \frac{1}{||x-x_0||}(f(x) - f(x_0)) = 0$$
 	, where the limit is in $\R^m$.
 	This differential is given by the \textbf{Jacobi matrix} $Df(x_0) = J_f(x_0)$.
 \end{definition}
@@ -47,7 +47,7 @@
 
 \begin{definition}[Directional derivative]
 	$f$ is differentiable in direction $v\in \R^n$ at $x_0$ if this limit exists:
-	$$D_vf(x_0) := \Lim{h\to 0} \frac{f(x_0 + hv) - f(x_0)}{h} = \frac{d}{dh}f(x_0 + hv)|_{h=0}$$
+	$$D_vf(x_0) := \lim_{h\to 0} \frac{f(x_0 + hv) - f(x_0)}{h} = \frac{d}{dh}f(x_0 + hv)|_{h=0}$$
 	If $||v|| = 1$, this is called the directional derivative.
 	\textbf{Important:} Existence of directional derivatives don't imply differentiability!
 	If $f$ is differentiable, $D_vf(x_0) = df(x_0)(v)$.
