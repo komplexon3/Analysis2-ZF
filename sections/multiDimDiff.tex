@@ -8,7 +8,7 @@
 	$$\partial_{x_i}(\partial_{x_i} f) = \partial_{x_i^2}f = \frac{\partial^2 f}{\partial x_i^2}, \ \partial_{x_i}(\partial_{x_j} f) = \partial_{x_i, x_j}f = \frac{\partial^2 f}{\partial x_i \partial x_j}$$
 \end{definition}
 
-\begin{theorem}[Multiple partial derivatives]
+\begin{theorem}[Partial derivatives commute]
 	$$\forall x,y:\; \partial_i \partial_j f = \frac{\partial^2 f}{\partial i \partial j} = \partial_j \partial_i f$$
 \end{theorem}
 
@@ -26,4 +26,65 @@
 	We define the Jacobi matrix of $f$ at $x$ as:
 	$$J_f(x) = (\partial_j f_i(x))_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}}$$
 \end{definition}
+
+\begin{definition}[Gradiant]
+	Let $f: X \to \R, \  X \subset \R^n $ open be a function for which all derfivatives at $x_0\inX$ exist.
+	Its gradient is:
+	$$\nabla f(x_0) = \begin{matrixb} \partial_1 f(x_0) \\ ... \\ \partial_n f(x_0) \end{matrixb}$$
+\end{definition}
+
+\begin{definition}[Differential]
+	Let $f: X \to \R^m, \  X \subset \R^n $ open and $u: \R^n \to \R^m$ linear.
+	$f$ is differentiable at $x_0 \in X$ with differential $Df(x_0) = df(x_0) = u$ if
+	$$\Lim{\substack{x \to x_0 \\ x \neq x_0}} \frac{1}{||x-x_0||}(f(x) - f(x_0)) = 0$$
+	, where the limit is in $\R^m$.
+	This differential is given by the \textbf{Jacobi matrix} $Df(x_0) = J_f(x_0)$.
+\end{definition}
+
+\begin{theorem}[]
+	If all partial derivatives for $f$ exist and are coninuous, then $f$ is differentiable.
+\end{theorem}
+
+\begin{definition}[Directional derivative]
+	$f$ is differentiable in direction $v\in \R^n$ at $x_0$ if this limit exists:
+	$$D_vf(x_0) := \Lim{h\to 0} \frac{f(x_0 + hv) - f(x_0)}{h} = \frac{d}{dh}f(x_0 + hv)|_{h=0}$$
+	If $||v|| = 1$, this is called the directional derivative.
+	\textbf{Important:} Existence of directional derivatives don't imply differentiability!
+	If $f$ is differentiable, $D_vf(x_0) = df(x_0)(v)$.
+\end{definition}
+
+\begin{proposition}[]
+	For $f$ differentiable on $X$ we have:
+	\begin{enumerate}
+		\item $f$ continuous on $X$.
+		\item $f$ has partial derivatives on $X$
+		\item Assuming $f$ maps to $\R$, and $u(x_1,...,x_n) = a_1x_1 + ... + a_nx_n$ is its differential at $x_0 \in X$.
+			Then $\partial_if(x_0) = a_i$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[]
+	Let $f, g: X \to \R^m$ differentiable on $X$, $\ X \subset X^n$ open:
+	\begin{enumerate}
+		\item $d(\alpha f + \beta g)(x_0) = \alpha df(x_0) + \beta dg(x_0)$
+		\item $d(fg) = g(x_0)df(x_0) + f(x_0)dg(x_0)$
+		\item If $g(x_0) \neq 0$: $d(f/g)(x_0) =  \frac{g(x_0)df(x_0) - f(x_0)dg(x_0)}{(g(x_0))^2}$
+		\item If $\det(df(x_0)) \neq 0 \Rightarrow f$ is locally bijective, hence for $y = f(x)$:
+			$$d(f^{-1})(y) = (df(x))^{-1} = J^{-1}_f(y)$$
+			If this holds for all $x \in X$, $f$ is called a \textbf{diffeomorphism}. 
+		\item For $f: X \to Y, \ g: Y \to \R^p$ differentiable, $g\circ f: X \to \R^p$ is differentiable with according to the \textbf{chain rule}:
+			$$d(g\circ f)(x_0) = dg(f(x_0))\circ df(x_0), \ J_{g\circ f}(x_0) = J_g(f(x_0))J_f(x_0)$$
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[Tangent space]
+	Consider $f: X \to \R^m, \ X\subset \R^n$ open with $u=df(x_0)$.
+	The affine linear approximation $g: \R^n \to \R^m,\  x \mapsto f(x_0) + u(x-x_0)$ defines the tagent space at $x_0$ to the graph of $f$.
+\end{definition}
+
+\begin{definition}[Hessian matrix]
+	For $C^2$ function from $X\subset \R^n \to \R$ we define the \textbf{symmetric square} matrix
+	$$H_f(x) = Hess_f(x) = (\partial_{i, j} f)_{1 \leq i, j \leq n}$$
+\end{definition}
+
 
