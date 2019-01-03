@@ -1,0 +1,245 @@
+\chapter{Multi-dim Integration}
+
+\section{Wegintegral und Potentialfeld}
+
+\begin{definition}[\textbf{Wegintegral}]
+    Sei $V: \Omega \subset \R^n \to \R^n$ ein stetig diff'bares Vektorfeld und sei $\gamma: [a, b] \to \R^n$ eine stückweise stetig differenzierbare Kurve. Dann ist das Wegintegral von $V$ entlang $\gamma$ definiert als
+    $$ \int V \: d\gamma = \int_\gamma V \: ds := \int_a^b V(\gamma(t)) \cdot \gamma'(t) \: dt$$
+    wobei wir $ds = \gamma'(t) \: dt$ als das \textit{Wegelement} bezeichnen. Die $\cdot$ Operation bezeichnet das Skalarprodukt.
+\end{definition}
+
+\begin{remark}
+    Damit wir von einer \textit{Parametrisierung} sprechen, verlangen wir, dass die Kurve \textbf{stetig} ist. Weiter muss sie \textbf{stückweise differenzierbar} sein. Eine solche Kurve nennen wir dann \textit{stückweise glatt}, $\gamma \in C^1_{pw}$ für piecewise.
+\end{remark}
+
+\begin{remark}
+    Für geschlossene Wege, also falls $\gamma(a) = \gamma(b)$ gilt, schreibt man oft $\displaystyle  \oint V \: d\gamma.$
+\end{remark}
+
+\begin{theorem}[Wegintegral]
+    Ein Wegintegral hat folgende wichtige Eigenschaften:
+    \begin{enumerate}
+    \item Das Wegintegral ist unabhängig von orientierungserhaltenden Parametrisierungen der Kurve, d.h. es ist nur vom Weg, nicht aber von der ``Geschwindigkeit" abhängig.
+    \item Ist $\gamma = \gamma_1 + \gamma_2+ \dots$ ein stückweise definierter Pfad, so gilt: 
+    $$ \int_{\gamma} V \: ds = \int_{\gamma_1} V \: ds + \int_{\gamma_2} V\: ds + \dots$$
+    \item Seien $\gamma$ und $-\gamma$ gleiche Pfade in umgekehrter Richtung durchlaufen, dann gilt $(-\gamma)(t):= \gamma(a+b-t)$ und
+    $$ \int_{-\gamma} V\: ds = - \int_{\gamma} V \: ds$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{concept}[Wegintegral] 
+    Gegeben: Vektorfeld $V$ von der Class $C^1$, Kurve $\gamma$ (aus $C^1_{pw}$).\\
+    Gesucht: Wegintegral $\int_{\gamma}V \: ds$
+    \begin{enumerate}
+        \item Paramterisiere $\gamma$: finde $\gamma:[a,b] \to \R^n, t \to \gamma(t)$
+        \item Berechne $\gamma'(t) = \frac{d}{dt} \gamma(t)$
+        \item Benutze die Formel $\int_{\gamma} V \: ds = \int_a^b V(\gamma(t)) \cdot \gamma'(t) \: dt$
+    \end{enumerate}
+\end{concept}
+
+\begin{remark}
+    Wichtige Integrale, die oft in Wegintegralberechnungen vorkommen:
+    $$\int_0^{2\pi}\cos^4t \: dt = \int_0^{2\pi}\sin^4t \: dt = \frac{3\pi}{4}$$
+    $$\int_0^{2\pi}\cos^3t \: dt = \int_0^{2\pi}\sin^3t \: dt = 0$$
+    $$\int_0^{2\pi}\cos^2t \: dt = \int_0^{2\pi}\sin^2t \: dt = \pi$$
+    $$\int_0^{2\pi}\sin t\cos^2t \: dt = \int_0^{2\pi}\cos t\sin^2t \: dt = 0$$
+    $$\int_0^{2\pi}\sin t\cos t \: dt = \int_0^{2\pi}\sin \: dt = \int_0^{2\pi}\cos \: dt = 0$$
+\end{remark}
+
+\begin{definition} [Potentialfeld]
+    Ein differenzierbares Skalarfeld $\Phi: \Omega \subset \R^n \to \R$ mit der Eigenschaft $$\nabla \Phi = V$$ heisst \textit{Potential} von $V$. Das Vektorfeld $V$ nennt man dann ein \textit{Potentialfeld}, oder auch \textit{konservativ}.
+\end{definition}
+
+\begin{remark}
+    Ein Potential $\Phi$ ist nicht eindeutig, denn für jedes Potential $\Phi$ ist auch $\Phi + C$  ein Potential.
+\end{remark}
+
+\begin{theorem}
+    Sei $V: \Omega \subset \R^n \to \R^n$ ein Potenzialfeld mit Potenzial $\Phi$. Dann gilt für jedes Wegintegral entlang Pfad $\gamma$, dass
+    $$ \int_{\gamma} V \: ds = \int_a^b V(\gamma(t)) \cdot \gamma'(t) \: dt = \Phi(\gamma(b)) - \Phi(\gamma(a))$$ das heisst, das Wegintegral ist nur vom Start- und Endpunkt abhängig, nicht aber vom durchlaufenen Weg.
+\end{theorem}
+
+\begin{definition}[\textbf{Sternförmige Menge}] 
+    Eine Menge $M \subset \R^n$ heisst \textit{sternförmig}, wenn     ein Punkt $x_0 \in M$ existiert, so dass für alle $x \in M$ gilt, dass 
+    $$ \overline{x_0 \: x} := \{ x_0 + t(x-x_0) \with t \in [0,1]\} \subseteq M$$ d.h. die Strecke zwischen $x_0$ und $x$ vollständig in $M$ liegt.
+\end{definition}
+
+\begin{theorem}[Integranilitätsbedingung für Potentialfelder]
+    Sei $\Omega \subset \R^n$ offen und $V:\Omega \to \R^n$ ein $C^1$ Vektorfeld. Falls $V$ konservativ (dh ein Potentialfehld) ist, dann gelten die Integranilitätsbedingungen:
+    $$ \frac{\partial V_i}{\partial x_j} = \frac{\partial V_j}{\partial x_i} \quad \quad \forall i,j \in \{1, \dots, n\}$$
+    Ist $\Omega \subset \R^n$ \textbf{sternförmig}, dann sind die Integranilitätsbedingung auch hinreichend:
+    $$ \frac{\partial V_i}{\partial x_j} = \frac{\partial V_j}{\partial x_i} \quad \quad \forall i,j \in \{1, \dots, n\} \iff V \mbox{ ist konservativ / ein Potentialfeld}.$$
+\end{theorem}
+
+\begin{remark}
+    Das Kriterium ist \textit{notwendig}, d.h. es eignet sich vorallem, um zu widerlegen, dass ein Vektorfeld konservativ ist.
+\end{remark}
+
+\begin{remark}
+    Im dreidimensionalen Fall $V : \R^3 \to \R^3$ ist die Integranilitätsbedingung äquivalent zur Bedingung $rot(V) = 0$.
+\end{remark}
+
+\begin{remark}
+    Konservative Felder sind Potentialfelder (äquivalent)
+\end{remark}
+
+\begin{lemma}
+    Das Wegintegral eines konservativen Vektorfeldes $V$ entlang eines geschlossenen Pfades verschwindet, d.h. für $\gamma:[a,b] \to \R^n$ mit $\gamma(a) = \gamma(b)$ gilt:
+    $$ \int_\gamma V \: ds = 0$$
+\end{lemma}
+
+\begin{lemma} Es gelten folgende Zusammenhänge:
+    \begin{enumerate}
+        \item Eine nicht-leere konvexe Menge ist immer sternförmig. Genauer ist eine Menge genau dann konvex, wenn die Eigenschaft aus Definition 1 für jeden Punkt in der Menge gilt.
+        \item Eine sternförmige Menge ist einfach zusammenhängend, also insbesondere auch wegzusammenhängend.
+        \item Eine sternförmige Menge ist \textit{kontrahierbar}.
+    \end{enumerate}
+\end{lemma} 
+
+\section{Allgemeines zum Integral auf $\R^n$}
+
+\begin{theorem}
+    Sei $Q \subset \R^n$ und $f: Q\to \R$ ein $C^0$ Skalarfeld auf $Q$. Dann ist $f$ auf $Q$ integrierbar.
+\end{theorem}
+
+\begin{theorem}
+    Sei $Q \subset \R^n$ und $f: Q \to \R$ ein Skalarfeld. Falls $f$ auf $Q$ beschränkt ist und nur in endlich vielen Punkten unstetig ist, dann ist $f$ über $Q$ integrierbar.
+\end{theorem}
+
+\begin{theorem}[Integraleigenschaften]
+    Sei $\Q \subset \R^n$ und $f,g: Q \to \R$ integrierbar und $\alpha,\beta \in \R$ Konstanten.
+    \begin{itemize}
+        \item[(i)] \textbf{Linearität:} die Funktion $(\alpha f + \beta g)$ ist integierbar mit \\
+        $ \int_Q  \alpha f + \beta g \: d \mu = \alpha \int_Q f \: d \mu + \beta \int_Q g \: d \mu$
+        \item[(ii)] \textbf{Monotonie:} falls $f \leq g$ für alle $x \in Q$, dann gilt auch \\
+        $ \int_Q f \: d \mu \leq \int_Q g \: d \mu$
+        \item[(iii)] \textbf{Positivität:} falls $f \geq 0$ für alle $x \in Q$, dann gilt auch\\
+        $ \int_Q f \: d \mu \geq 0$
+        \item[(iv)] \textbf{Dreiecksungleichung:} Aus der Dreiecksungleichung folgt, dass \\
+        $ \left| \int_Q f \: d\mu \right| \leq \int_Q |f| \: d\mu$
+        \item[(v)] \textbf{Volumen:} falls $f = 1$, dann gilt
+        $ \mathrm{Vol}(Q) = \int_Q f \: d \mu = \int_Q 1 \: d\mu$
+    \end{itemize}
+\end{theorem}
+
+\section{Integration auf Quadern und der Satz von Fubini}
+
+\begin{theorem}[Satz von Fubini]
+    Sei $Q = [a_1, b_1] \times \dots \times [a_n, b_n]$ ein $n$-dimensionaler Quader und $f: Q \to \R$ integrierbar. Dann gilt:
+$$ \int_Q f(x) \: d\mu = \int_{a_1}^{b_1} dx_1 \int_{a_2}^{b_2} dx_2 \dots \int_{a_n}^{b_n} f(x_1, \dots, x_n) \: dx_n$$
+Das Integral wird von innen nach aussen gelöst.\\Insbesondere gilt aus Symmetriegründen, dass die Reihenfolge der Integration keine Rolle spielt.
+\end{theorem}
+
+\begin{remark}
+    Da eine aus einem einzelnen Punkt bestehende Menge eine Nullmenge ist, also Mass Null hat, macht es keinen Unterschied, ob die Intervalle offen, abgeschlossen oder halb-offen sind.
+\end{remark}
+
+\section{Integration auf Normalbereichen}
+
+\begin{definition}[\textbf{Normalbereich}]
+    Sei $\Omega \subset \R^2$ beschränkt. Dann heisst $\Omega$ ein $y$-Normalbereich, falls ein Intervall $[a,b]$ und zwei stetige Funktionen $f,g$ existieren, so dass sich $\Omega$ schreiben lässt als
+    $$ \Omega = \{(x,y) \in \R^2 \with a \leq x \leq b, f(x) \leq y \leq g(x)\}$$Analog ist $\Omega$ ein $x$-Normalbereich, falls ein Intervall $[c,d]$ und zwei stetige Funktionen $h,k$ existieren, so dass sich $\Omega$ schreiben lässt als
+    $$ \Omega = \{(x,y) \in \R^2 \with c \leq y \leq d, h(y) \leq x \leq k(y)\}$$
+\end{definition}
+
+\begin{theorem}[Integration auf Normalbereichen ($\R^2$)]
+    Sei $\Omega$ ein $y$-Normalbereich, also 
+    $$ \Omega = \{(x,y) \in \R^2 \with a \leq x \leq b, f(x) \leq y \leq g(x)\}$$ mit $f,g$ stetig. Seit $F : \Omega \to \R$ integrierbar, dann gilt:
+    $$ \int_Q F \: d \mu = \int_a^b dx \int_{f(x)}^{g(x)} F(x,y) \: dy$$
+    wobei das Integral wieder von innen nach aussen ausgewertet wird.
+\end{theorem}
+
+\begin{remark}[Skalierungstrick]
+    Eine Skalierung um einen Faktor $a$ in $n$ Dimensionen trägt mit $a^n$ zum Gesamtvolumen bei.
+\end{remark}
+
+\section{Substitution}
+
+\begin{theorem}[Substitutionsregel in $\R^n$]
+    Sei $f :\R^n \to \R$ eine Riemann-integrierbare Funktion auf dem Gebiet $\Omega \subset \R^n$, und sei die Koordinatentransformation $\Phi$ wie vorher definiert ein $C^1$ Diffeomorphismus. Dann gilt:
+    $$ \int_\Omega f(x_1, \dots, x_n) \: dx_1 \: \dots \: dx_n =$$
+    $$\int_{\widetilde{\Omega}} f(g_1(u), \dots, g_n(u)) \cdot |\det d \Phi| \: du_1 \: \dots \: du_n$$
+    wobei $\det d \Phi$ die \textit{Funktionaldeterminante} oder Jacobi-Matrix der Koordinatentransformation $\Phi$ genannt wird und 
+    $$\det d\Phi = \det 
+    \begin{bmatrix} 
+        \frac{\partial g_1}{\partial u_1}   & \dots  & \frac{\partial g_1}{\partial u_n} & \\
+        \vdots                              & \ddots & \vdots & \\
+        \frac{\partial g_n}{\partial u_1}   & \dots  & \frac{\partial g_n}{\partial u_n}
+    \end{bmatrix}$$
+\end{theorem}
+
+\begin{concept}[Koordinatentransformationen in $\R^2$]
+    \begin{itemize}
+        \item \textbf{Polarkoordinaten:} Diese Koordinaten kennen wir bereits:
+        \begin{align*}
+             x = r \cos \phi \quad \quad \quad \quad & r \in [0, \infty) &  dx\: dy = r \: dr \: d\phi\\
+             y = r \sin \phi \quad \quad \quad \quad  & \phi \in [0, 2\pi) &
+        \end{align*}
+        \item \textbf{Elliptische Koordinaten:} Diese repräsentieren nicht mehr einen Kreis mit Radius $r$, sondern eine Ellipse mit den beiden Halbachsen $ra$ und $rb$.
+        \begin{align*}
+             x = r a \cos \phi \quad \quad \quad \quad & r \in [0, \infty) &  dx\: dy = ab r \: dr \: d\phi\\
+             y = r \sin \phi \quad \quad \quad \quad  & \phi \in [0, 2\pi) &
+        \end{align*}
+    \end{itemize} 
+\end{concept}
+
+\begin{concept}[Koordinatentransformationen in $\R^3$]
+    \begin{itemize}
+        \item \textbf{Kugelkoordinaten:} Analog zu den Polarkoordinaten können wir für den 3-dimensionalen Raum Kugelkoordinaten definieren.
+        \begin{align*}
+             x = r \sin \Theta \cos \phi \quad \quad \quad \quad & r \in [0, \infty) &  \\
+             y = r \sin \Theta \sin \phi \quad \quad \quad \quad  & \Theta \in [0,\pi) & dx\: dy\: dz = r^2 \sin \Theta \: dr \: d\Theta \: d\phi \\
+             z = r \cos \Theta \quad \quad \quad \quad & \phi \in [0, 2\pi) &
+        \end{align*}
+        \item \textbf{Zylinderkoordinaten:} eine Erweiterung der Polarkoordinaten, in dem die $z$-Dimension einfach durch die Höhe $z$ dargestellt wird.
+        \begin{align*}
+             x = r \cos \phi \quad \quad \quad \quad & r \in [0, \infty) & \\
+             y = r \sin \phi \quad \quad \quad \quad  & \phi \in [0, 2\pi) & dx\: dy \: dz =  r \: dr \: d\phi \: dz\\ 
+             z = z \quad \quad \quad \quad & z \in (- \infty, \infty) & 
+        \end{align*}
+    \end{itemize}
+\end{concept}
+
+\section{Satz von Green in der Ebene}
+
+\begin{theorem}[Satz von Green ($\R^2)$]
+    Sei $V=(v_1, v_2)$ ein stetig differenzierbares Vektorfeld über einem Gebiet $\Omega \subset\R^2$. Sei weiter $C \subset \Omega$ beschränkt mit einem stückweise stetig differenzierbarem Rand $\partial C \in C_{\mathit{pw}}^1(C)$. Dann gilt:
+    $$ \int_{\gamma = \partial C} V \: ds = \int_C \left(\frac{\partial v_2}{\partial x} - \frac{\partial v_1}{\partial y} \right) \: dx \: dy$$
+\end{theorem}
+
+\begin{remark}
+    Der Rand $\partial C$ wir im positiven mathematischen Sinn umlaufen, dh so, dass das Gebiet C immer links steht.
+\end{remark}
+
+\begin{concept}[Berechnung von $\mu(C)$ mit dem Satz von Green]
+    Gegeben: $C \subset \R^2$ beschränkt mit $C_{pw}^1$-Rand $\partial C$ \\
+    Gesucht: $\mu(C)$
+    \begin{itemize}
+        \item Parametrisiere den Rand von C mit der Kurve $$\gamma : [a,b] \to \R^2, t \to \gamma(t)$$
+        Beachte dabei, dass die Parametrisierung in mathematisch positiver Richtung verläuft (Menge C immer links).
+        \item Berechne $\gamma'$ (jede Komponente nach dem Parameter t ableiten.
+        \item Wende die Formel $$\mu(C) = \int_{\gamma = \partial C}V \cdot ds$$ an mit $V = (0,x)$
+    \end{itemize}
+\end{concept}
+
+\section{Integralanwendungen: Masse, Schwerpunkt, Oberfläche}
+
+\begin{remark}[Masse ($\R^3$)]
+    Sei $\rho(x,y,z)$ die Massendichte\footnote{Eine Massedichte beschreibt die Massenverteilung auf $\Omega$} eines dreidimensionalen Körpers $\Omega \subset \R^3$. Dann erhalten wir die Masse von $\Omega$ als Volumenintegral von $\rho$ über $\Omega$:
+    $$ M = \int_\Omega \rho(x,y,z) \: d\mu$$
+\end{remark}
+
+\begin{remark}[Schwerpunkt ($\R^3$)]
+    Der Schwerpunkt eines dreidimensionalen Körpers $\Omega \subset \R^3$ ist der Punkt $S=(x_s, y_s, z_s)$, so dass $\Omega$ im Gleichgewicht ist, wenn $\Omega$ auf der Stelle $S$ angelegt wird. Dies entspricht physikalisch dem Punkt, an dem die Summe aller Drehmomente verschwindet. Der Schwerpunkt ist dann gegeben durch die drei Formeln
+    \begin{eqnarray*}
+        x_s & = & \frac{1}{M} \int_\Omega x \cdot \rho(x,y,z) \: d\mu \\
+        y_s & = & \frac{1}{M} \int_\Omega y \cdot \rho(x,y,z) \: d\mu \\
+        z_s & = & \frac{1}{M} \int_\Omega z \cdot \rho(x,y,z) \: d\mu 
+    \end{eqnarray*}
+\end{remark}
+
+\begin{remark}[Oberfläche ($\R^3$)]
+    Sei $f: ]a,b[ \times ]c,d[ \to \R$ eine stetige Funktion $\in C^1$ und $F = \{(x,y,z) \in \R^3 | (x,y) \in [a,b] \times [c,d], z = f(x,y)\} \subset \R^3$ dann ist $$ \mu(F) = \int_a^b \int_c^d \sqrt{1 + (\partial_x f(x,y))^2 + (\partial_y f(x,y))^2} dx dy $$
+\end{remark}
+
+    

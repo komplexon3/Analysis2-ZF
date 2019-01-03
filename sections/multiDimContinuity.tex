@@ -22,6 +22,10 @@
 	If $f: X \to Y$ and $g: Y \to \R^m$ are continuous, then so is their composite $g \circ f$.
 \end{proposition}
 
+\begin{remark}
+    Im 2-dimensionalen Fall kann man die Stetigkeit einer Funktion mit dem "Polarkoordinaten-Trick" zeigen: Man ersetzt $x = r\cos{\phi}$ und $y = r\sin{\phi}$ und bildet den Grenzwert $\lim_{r \to 0}$. Falls das Resultat von $\phi$ abhängt, exisitiert der Grenzwert nicht. Beachte $r$ ist immer positiv somit gilt $\sqrt{r^2} = r$ (ohne Betragsstriche).
+\end{remark}
+
 \begin{definition}[Bounded, closed, compact, open sets]
 	\begin{enumerate}
 		\item $X \subset \R^n$ is \textbf{bounded} if the set $\{||x|| \ | \ x \in X\}$ is bounded in $R$.
@@ -35,7 +39,7 @@
 
 \begin{proposition}
 	Let $f: \R^n \to \R^m$ be continuous.
-	For any closed set $Y \subset \R^m$, $f^{-1} = {x\in \R^n | f(x) \in Y} \subset \R^n$ is closed.
+	For any closed set $Y \subset \R^m$, $$f^{-1} = {x\in \R^n | f(x) \in Y} \subset \R^n$$ is closed.
 \end{proposition}
 
 \begin{theorem}[Min \& Max on compact sets]
@@ -49,3 +53,7 @@
 \begin{corollary}
 	For $F: \R^n \to \R^m$ continuous and $Y \subset \R^m$ open, $f^{-1}(Y)$ is open.
 \end{corollary}
+
+\begin{remark}
+    \textcolor{red}{insert Grenwerte}
+\end{remark}
